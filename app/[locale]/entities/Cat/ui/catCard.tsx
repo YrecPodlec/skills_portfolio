@@ -31,8 +31,11 @@ const CatCard = ({cat}: Props) => {
             </section>
 
             <footer>
-                <div>В наличии: {cat.exist ? "YES" : "NO"}</div>
-                <div>ЗАКАЗАТЬ</div>
+                <div>В наличии: {cat.count > 0 ? "YES" : "NO"}</div>
+                {
+                    cat.count <=0 ? null : (<button>ЗАКАЗАТЬ</button>)
+                }
+
             </footer>
         </article>
     );

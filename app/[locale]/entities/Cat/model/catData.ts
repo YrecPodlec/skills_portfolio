@@ -10,6 +10,6 @@ export const cats: Cat[] = [
         price: 100,
         description: 'Любит спать и мурлыкать.',
         color: "#ff4d0c",
-        exist: false
+        count: 45
     },
 ];

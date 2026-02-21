@@ -1,0 +1,1 @@
+export * from "@/app/[locale]/shared/lib/prisma";

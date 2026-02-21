@@ -6,5 +6,5 @@ export interface Cat {
     price: number;
     description: string;
     color: string;
-    exist: boolean;
+    count: number;
 }
