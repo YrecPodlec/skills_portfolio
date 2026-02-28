@@ -10,8 +10,8 @@ export default function HomePage() {
             .then(res => res.json())
             .then(data => {
                 setCats(data);
-                console.log("Коты из fetch (должно быть в браузере):", data);  // ← здесь 100% браузер
-                console.dir(data);  // или так, красивее выводит объекты
+                console.log("Коты из fetch (должно быть в браузере):", data);
+                console.dir(data);
             })
             .catch(err => console.error("Ошибка:", err));
     }, []);
@@ -20,7 +20,7 @@ export default function HomePage() {
 
       <main>
 TESSSSSSSSSSSSST
-          {cats.map((cat: Cat) => (<div>{cat.name}</div>))}
+          {cats.map((cat: Cat) => (<div key={cat.id}>{cat.name}</div>))}
       </main>
   );
 }
