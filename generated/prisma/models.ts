@@ -8,5 +8,15 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/Cat'
+export type * from './models/Patient'
+export type * from './models/Owner'
+export type * from './models/Breed'
+export type * from './models/Visit'
+export type * from './models/VisitService'
+export type * from './models/Service'
+export type * from './models/Vaccine'
+export type * from './models/VaccinationDetails'
+export type * from './models/Employer'
+export type * from './models/EmployerPost'
+export type * from './models/EmployerListPost'
 export type * from './commonInputTypes'

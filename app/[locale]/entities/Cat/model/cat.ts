@@ -1,10 +1,9 @@
 export interface Cat {
-    id: string;
+    id: number;
     name: string;
-    age: number;
-    image: string;
-    price: number;
-    description: string;
+    birth: Date;
+    sex: boolean;
     color: string;
-    count: number;
+    regDate: Date;
+    chipNumber: string;
 }

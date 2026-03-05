@@ -7,13 +7,146 @@ datasource db {
   provider = "postgresql"
 }
 
-model Cat {
-  id          String  @id @default(uuid())
-  name        String
-  age         Int
-  image       String
-  price       Int
-  description String
-  color       String
-  count       Int
+model Patient {
+  id               Int       @id @default(autoincrement())
+
+  name             String    @db.VarChar(100)
+
+  dateOfBirth      DateTime? @db.Date
+
+  sex              Boolean?  @default(true)
+
+  color            String?   @db.VarChar(50)
+
+  registrationDate DateTime  @default(now()) @db.Timestamptz(6)
+
+  chipNumber       String?   @unique @db.VarChar(50)
+
+  // Foreign Keys
+  ownerId          Int
+  breedId          Int
+
+  // Relations
+  owner            Owner     @relation(fields: [ownerId], references: [id])
+  breed            Breed     @relation(fields: [breedId], references: [id])
+
+  visits           Visit[]
+}
+
+model Owner {
+  id         Int       @id @default(autoincrement())
+
+  firstName  String    @db.VarChar(100)
+  lastName   String    @db.VarChar(100)
+
+  phone      String    @unique @db.VarChar(20)
+  email      String?   @db.VarChar(150)
+
+  birth      DateTime? @db.Date
+
+  address    String?   @db.Text
+
+  createdAt  DateTime  @default(now()) @db.Timestamptz(6)
+
+  // Relations
+  patients   Patient[]
+}
+
+model Breed {
+  id       Int      @id @default(autoincrement())
+
+  name     String   @unique @db.VarChar(100)
+
+  species  String   @default("cat") @db.VarChar(50)
+
+  patients Patient[]
+}
+
+model Visit {
+  id        Int       @id @default(autoincrement())
+
+  startAt   DateTime  @default(now()) @db.Timestamptz(6)
+  endAt     DateTime? @db.Timestamptz(6)
+
+  status    String    @default("open") @db.VarChar(50)
+
+  notes     String?   @db.Text
+
+  // Foreign Key
+  patientId Int
+
+  // Relations
+  patient   Patient   @relation(fields: [patientId], references: [id])
+
+  services  VisitService[]
+}
+
+model VisitService {
+  id        Int       @id @default(autoincrement())
+
+  notes     String?   @db.Text
+
+  // Foreign Keys
+  visitId   Int
+  serviceId Int
+
+  // Relations
+  visit     Visit     @relation(fields: [visitId], references: [id])
+  service   Service   @relation(fields: [serviceId], references: [id])
+
+  vaccination VaccinationDetails?
+}
+
+model Service {
+  id          Int             @id @default(autoincrement())
+  name        String          @db.VarChar(100)
+  visitServices VisitService[]
+}
+
+model Vaccine {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique @db.VarChar(100)
+  vaccinationDetails  VaccinationDetails[]
+}
+
+model VaccinationDetails {
+  id              Int       @id @default(autoincrement())
+
+  vaccineId       Int
+  visitServiceId  Int       @unique
+
+  batchNumber     BigInt   @db.BigInt
+  expDate         DateTime @db.Date
+  nextDueDate     DateTime @db.Date
+  AdmSite         String   @db.VarChar(100)
+  notes           String?  @db.Text
+
+  // Relations
+  visitService    VisitService @relation(fields: [visitServiceId], references: [id])
+  vaccine         Vaccine      @relation(fields: [vaccineId], references: [id])
+}
+
+model Employer {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(50)
+  lastname String @db.VarChar(50)
+
+  posts    EmployerListPost[]
+}
+
+model EmployerPost {
+  id   Int    @id @default(autoincrement())
+  post String @db.VarChar(50)
+
+  employers EmployerListPost[]
+}
+
+model EmployerListPost {
+  employerId Int
+  postId     Int
+
+  employer   Employer     @relation(fields: [employerId], references: [id])
+  post       EmployerPost @relation(fields: [postId], references: [id])
+
+  @@id([employerId, postId])
 }

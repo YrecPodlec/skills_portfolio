@@ -51,7 +51,17 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Cat: 'Cat'
+  Patient: 'Patient',
+  Owner: 'Owner',
+  Breed: 'Breed',
+  Visit: 'Visit',
+  VisitService: 'VisitService',
+  Service: 'Service',
+  Vaccine: 'Vaccine',
+  VaccinationDetails: 'VaccinationDetails',
+  Employer: 'Employer',
+  EmployerPost: 'EmployerPost',
+  EmployerListPost: 'EmployerListPost'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,18 +80,119 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const CatScalarFieldEnum = {
+export const PatientScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  age: 'age',
-  image: 'image',
-  price: 'price',
-  description: 'description',
+  dateOfBirth: 'dateOfBirth',
+  sex: 'sex',
   color: 'color',
-  count: 'count'
+  registrationDate: 'registrationDate',
+  chipNumber: 'chipNumber',
+  ownerId: 'ownerId',
+  breedId: 'breedId'
 } as const
 
-export type CatScalarFieldEnum = (typeof CatScalarFieldEnum)[keyof typeof CatScalarFieldEnum]
+export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
+
+
+export const OwnerScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phone: 'phone',
+  email: 'email',
+  birth: 'birth',
+  address: 'address',
+  createdAt: 'createdAt'
+} as const
+
+export type OwnerScalarFieldEnum = (typeof OwnerScalarFieldEnum)[keyof typeof OwnerScalarFieldEnum]
+
+
+export const BreedScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  species: 'species'
+} as const
+
+export type BreedScalarFieldEnum = (typeof BreedScalarFieldEnum)[keyof typeof BreedScalarFieldEnum]
+
+
+export const VisitScalarFieldEnum = {
+  id: 'id',
+  startAt: 'startAt',
+  endAt: 'endAt',
+  status: 'status',
+  notes: 'notes',
+  patientId: 'patientId'
+} as const
+
+export type VisitScalarFieldEnum = (typeof VisitScalarFieldEnum)[keyof typeof VisitScalarFieldEnum]
+
+
+export const VisitServiceScalarFieldEnum = {
+  id: 'id',
+  notes: 'notes',
+  visitId: 'visitId',
+  serviceId: 'serviceId'
+} as const
+
+export type VisitServiceScalarFieldEnum = (typeof VisitServiceScalarFieldEnum)[keyof typeof VisitServiceScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
+export const VaccineScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type VaccineScalarFieldEnum = (typeof VaccineScalarFieldEnum)[keyof typeof VaccineScalarFieldEnum]
+
+
+export const VaccinationDetailsScalarFieldEnum = {
+  id: 'id',
+  vaccineId: 'vaccineId',
+  visitServiceId: 'visitServiceId',
+  batchNumber: 'batchNumber',
+  expDate: 'expDate',
+  nextDueDate: 'nextDueDate',
+  AdmSite: 'AdmSite',
+  notes: 'notes'
+} as const
+
+export type VaccinationDetailsScalarFieldEnum = (typeof VaccinationDetailsScalarFieldEnum)[keyof typeof VaccinationDetailsScalarFieldEnum]
+
+
+export const EmployerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  lastname: 'lastname'
+} as const
+
+export type EmployerScalarFieldEnum = (typeof EmployerScalarFieldEnum)[keyof typeof EmployerScalarFieldEnum]
+
+
+export const EmployerPostScalarFieldEnum = {
+  id: 'id',
+  post: 'post'
+} as const
+
+export type EmployerPostScalarFieldEnum = (typeof EmployerPostScalarFieldEnum)[keyof typeof EmployerPostScalarFieldEnum]
+
+
+export const EmployerListPostScalarFieldEnum = {
+  employerId: 'employerId',
+  postId: 'postId'
+} as const
+
+export type EmployerListPostScalarFieldEnum = (typeof EmployerListPostScalarFieldEnum)[keyof typeof EmployerListPostScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -98,4 +209,12 @@ export const QueryMode = {
 } as const
 
 export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+export const NullsOrder = {
+  first: 'first',
+  last: 'last'
+} as const
+
+export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 

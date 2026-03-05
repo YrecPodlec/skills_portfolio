@@ -1,1 +1,1 @@
-export * from "@/app/[locale]/shared/lib/prisma";
+export * from './lib/index'
