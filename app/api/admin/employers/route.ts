@@ -1,6 +1,5 @@
 import {prisma} from "@/lib/prisma";
-import {NextResponse} from "next/server";
-import {data} from "@formatjs/intl-localematcher/abstract/languageMatching";
+import {NextRequest, NextResponse} from "next/server";
 export async function GET(){
     try {
         const employers = await prisma.employer.findMany(
@@ -23,7 +22,7 @@ export async function GET(){
         );
     }
 }
-export async function POST(request: Request){
+export async function POST(request: NextRequest){
     try {
         const body = await request.json();
         const {name, lastname, postIds} = body;

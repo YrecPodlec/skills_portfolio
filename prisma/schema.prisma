@@ -115,7 +115,7 @@ model VaccinationDetails {
   vaccineId       Int
   visitServiceId  Int       @unique
 
-  batchNumber     BigInt   @db.BigInt
+  batchNumber String @db.VarChar(50)
   expDate         DateTime @db.Date
   nextDueDate     DateTime @db.Date
   AdmSite         String   @db.VarChar(100)
