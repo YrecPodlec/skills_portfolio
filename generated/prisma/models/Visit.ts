@@ -346,14 +346,9 @@ export type VisitUncheckedUpdateManyInput = {
   patientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type VisitListRelationFilter = {
-  every?: Prisma.VisitWhereInput
-  some?: Prisma.VisitWhereInput
-  none?: Prisma.VisitWhereInput
-}
-
-export type VisitOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
+export type VisitScalarRelationFilter = {
+  is?: Prisma.VisitWhereInput
+  isNot?: Prisma.VisitWhereInput
 }
 
 export type VisitCountOrderByAggregateInput = {
@@ -393,9 +388,32 @@ export type VisitSumOrderByAggregateInput = {
   patientId?: Prisma.SortOrder
 }
 
-export type VisitScalarRelationFilter = {
-  is?: Prisma.VisitWhereInput
-  isNot?: Prisma.VisitWhereInput
+export type VisitListRelationFilter = {
+  every?: Prisma.VisitWhereInput
+  some?: Prisma.VisitWhereInput
+  none?: Prisma.VisitWhereInput
+}
+
+export type VisitOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
+export type VisitCreateNestedOneWithoutServicesInput = {
+  create?: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
+  connectOrCreate?: Prisma.VisitCreateOrConnectWithoutServicesInput
+  connect?: Prisma.VisitWhereUniqueInput
+}
+
+export type VisitUpdateOneRequiredWithoutServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
+  connectOrCreate?: Prisma.VisitCreateOrConnectWithoutServicesInput
+  upsert?: Prisma.VisitUpsertWithoutServicesInput
+  connect?: Prisma.VisitWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VisitUpdateToOneWithWhereWithoutServicesInput, Prisma.VisitUpdateWithoutServicesInput>, Prisma.VisitUncheckedUpdateWithoutServicesInput>
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type VisitCreateNestedManyWithoutPatientInput = {
@@ -440,18 +458,54 @@ export type VisitUncheckedUpdateManyWithoutPatientNestedInput = {
   deleteMany?: Prisma.VisitScalarWhereInput | Prisma.VisitScalarWhereInput[]
 }
 
-export type VisitCreateNestedOneWithoutServicesInput = {
-  create?: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
-  connectOrCreate?: Prisma.VisitCreateOrConnectWithoutServicesInput
-  connect?: Prisma.VisitWhereUniqueInput
+export type VisitCreateWithoutServicesInput = {
+  startAt?: Date | string
+  endAt?: Date | string | null
+  status?: string
+  notes?: string | null
+  patient: Prisma.PatientCreateNestedOneWithoutVisitsInput
 }
 
-export type VisitUpdateOneRequiredWithoutServicesNestedInput = {
-  create?: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
-  connectOrCreate?: Prisma.VisitCreateOrConnectWithoutServicesInput
-  upsert?: Prisma.VisitUpsertWithoutServicesInput
-  connect?: Prisma.VisitWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.VisitUpdateToOneWithWhereWithoutServicesInput, Prisma.VisitUpdateWithoutServicesInput>, Prisma.VisitUncheckedUpdateWithoutServicesInput>
+export type VisitUncheckedCreateWithoutServicesInput = {
+  id?: number
+  startAt?: Date | string
+  endAt?: Date | string | null
+  status?: string
+  notes?: string | null
+  patientId: number
+}
+
+export type VisitCreateOrConnectWithoutServicesInput = {
+  where: Prisma.VisitWhereUniqueInput
+  create: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
+}
+
+export type VisitUpsertWithoutServicesInput = {
+  update: Prisma.XOR<Prisma.VisitUpdateWithoutServicesInput, Prisma.VisitUncheckedUpdateWithoutServicesInput>
+  create: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
+  where?: Prisma.VisitWhereInput
+}
+
+export type VisitUpdateToOneWithWhereWithoutServicesInput = {
+  where?: Prisma.VisitWhereInput
+  data: Prisma.XOR<Prisma.VisitUpdateWithoutServicesInput, Prisma.VisitUncheckedUpdateWithoutServicesInput>
+}
+
+export type VisitUpdateWithoutServicesInput = {
+  startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitsNestedInput
+}
+
+export type VisitUncheckedUpdateWithoutServicesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  status?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type VisitCreateWithoutPatientInput = {
@@ -507,56 +561,6 @@ export type VisitScalarWhereInput = {
   status?: Prisma.StringFilter<"Visit"> | string
   notes?: Prisma.StringNullableFilter<"Visit"> | string | null
   patientId?: Prisma.IntFilter<"Visit"> | number
-}
-
-export type VisitCreateWithoutServicesInput = {
-  startAt?: Date | string
-  endAt?: Date | string | null
-  status?: string
-  notes?: string | null
-  patient: Prisma.PatientCreateNestedOneWithoutVisitsInput
-}
-
-export type VisitUncheckedCreateWithoutServicesInput = {
-  id?: number
-  startAt?: Date | string
-  endAt?: Date | string | null
-  status?: string
-  notes?: string | null
-  patientId: number
-}
-
-export type VisitCreateOrConnectWithoutServicesInput = {
-  where: Prisma.VisitWhereUniqueInput
-  create: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
-}
-
-export type VisitUpsertWithoutServicesInput = {
-  update: Prisma.XOR<Prisma.VisitUpdateWithoutServicesInput, Prisma.VisitUncheckedUpdateWithoutServicesInput>
-  create: Prisma.XOR<Prisma.VisitCreateWithoutServicesInput, Prisma.VisitUncheckedCreateWithoutServicesInput>
-  where?: Prisma.VisitWhereInput
-}
-
-export type VisitUpdateToOneWithWhereWithoutServicesInput = {
-  where?: Prisma.VisitWhereInput
-  data: Prisma.XOR<Prisma.VisitUpdateWithoutServicesInput, Prisma.VisitUncheckedUpdateWithoutServicesInput>
-}
-
-export type VisitUpdateWithoutServicesInput = {
-  startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitsNestedInput
-}
-
-export type VisitUncheckedUpdateWithoutServicesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  startAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  endAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  status?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  patientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type VisitCreateManyPatientInput = {

@@ -7,6 +7,12 @@ export async function GET() {
             include: {
                 visit: true,
                 service: true,
+                doctor: {
+                    include: {
+                        post: true,
+                        employer: true,
+                    }
+                },
                 vaccination: {
                     include: {
                         vaccine: true

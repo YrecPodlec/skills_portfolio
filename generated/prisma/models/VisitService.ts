@@ -30,33 +30,49 @@ export type VisitServiceAvgAggregateOutputType = {
   id: number | null
   visitId: number | null
   serviceId: number | null
+  doctorId: number | null
+  patientId: number | null
 }
 
 export type VisitServiceSumAggregateOutputType = {
   id: number | null
   visitId: number | null
   serviceId: number | null
+  doctorId: number | null
+  patientId: number | null
 }
 
 export type VisitServiceMinAggregateOutputType = {
   id: number | null
   notes: string | null
+  startedAt: Date | null
+  endedAt: Date | null
   visitId: number | null
   serviceId: number | null
+  doctorId: number | null
+  patientId: number | null
 }
 
 export type VisitServiceMaxAggregateOutputType = {
   id: number | null
   notes: string | null
+  startedAt: Date | null
+  endedAt: Date | null
   visitId: number | null
   serviceId: number | null
+  doctorId: number | null
+  patientId: number | null
 }
 
 export type VisitServiceCountAggregateOutputType = {
   id: number
   notes: number
+  startedAt: number
+  endedAt: number
   visitId: number
   serviceId: number
+  doctorId: number
+  patientId: number
   _all: number
 }
 
@@ -65,33 +81,49 @@ export type VisitServiceAvgAggregateInputType = {
   id?: true
   visitId?: true
   serviceId?: true
+  doctorId?: true
+  patientId?: true
 }
 
 export type VisitServiceSumAggregateInputType = {
   id?: true
   visitId?: true
   serviceId?: true
+  doctorId?: true
+  patientId?: true
 }
 
 export type VisitServiceMinAggregateInputType = {
   id?: true
   notes?: true
+  startedAt?: true
+  endedAt?: true
   visitId?: true
   serviceId?: true
+  doctorId?: true
+  patientId?: true
 }
 
 export type VisitServiceMaxAggregateInputType = {
   id?: true
   notes?: true
+  startedAt?: true
+  endedAt?: true
   visitId?: true
   serviceId?: true
+  doctorId?: true
+  patientId?: true
 }
 
 export type VisitServiceCountAggregateInputType = {
   id?: true
   notes?: true
+  startedAt?: true
+  endedAt?: true
   visitId?: true
   serviceId?: true
+  doctorId?: true
+  patientId?: true
   _all?: true
 }
 
@@ -184,8 +216,12 @@ export type VisitServiceGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type VisitServiceGroupByOutputType = {
   id: number
   notes: string | null
+  startedAt: Date
+  endedAt: Date
   visitId: number
   serviceId: number
+  doctorId: number
+  patientId: number
   _count: VisitServiceCountAggregateOutputType | null
   _avg: VisitServiceAvgAggregateOutputType | null
   _sum: VisitServiceSumAggregateOutputType | null
@@ -214,20 +250,32 @@ export type VisitServiceWhereInput = {
   NOT?: Prisma.VisitServiceWhereInput | Prisma.VisitServiceWhereInput[]
   id?: Prisma.IntFilter<"VisitService"> | number
   notes?: Prisma.StringNullableFilter<"VisitService"> | string | null
+  startedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
+  endedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
   visitId?: Prisma.IntFilter<"VisitService"> | number
   serviceId?: Prisma.IntFilter<"VisitService"> | number
+  doctorId?: Prisma.IntFilter<"VisitService"> | number
+  patientId?: Prisma.IntFilter<"VisitService"> | number
   visit?: Prisma.XOR<Prisma.VisitScalarRelationFilter, Prisma.VisitWhereInput>
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  doctor?: Prisma.XOR<Prisma.EmployerListPostScalarRelationFilter, Prisma.EmployerListPostWhereInput>
+  patient?: Prisma.XOR<Prisma.PatientScalarRelationFilter, Prisma.PatientWhereInput>
   vaccination?: Prisma.XOR<Prisma.VaccinationDetailsNullableScalarRelationFilter, Prisma.VaccinationDetailsWhereInput> | null
 }
 
 export type VisitServiceOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  endedAt?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
   visit?: Prisma.VisitOrderByWithRelationInput
   service?: Prisma.ServiceOrderByWithRelationInput
+  doctor?: Prisma.EmployerListPostOrderByWithRelationInput
+  patient?: Prisma.PatientOrderByWithRelationInput
   vaccination?: Prisma.VaccinationDetailsOrderByWithRelationInput
 }
 
@@ -237,18 +285,28 @@ export type VisitServiceWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.VisitServiceWhereInput[]
   NOT?: Prisma.VisitServiceWhereInput | Prisma.VisitServiceWhereInput[]
   notes?: Prisma.StringNullableFilter<"VisitService"> | string | null
+  startedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
+  endedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
   visitId?: Prisma.IntFilter<"VisitService"> | number
   serviceId?: Prisma.IntFilter<"VisitService"> | number
+  doctorId?: Prisma.IntFilter<"VisitService"> | number
+  patientId?: Prisma.IntFilter<"VisitService"> | number
   visit?: Prisma.XOR<Prisma.VisitScalarRelationFilter, Prisma.VisitWhereInput>
   service?: Prisma.XOR<Prisma.ServiceScalarRelationFilter, Prisma.ServiceWhereInput>
+  doctor?: Prisma.XOR<Prisma.EmployerListPostScalarRelationFilter, Prisma.EmployerListPostWhereInput>
+  patient?: Prisma.XOR<Prisma.PatientScalarRelationFilter, Prisma.PatientWhereInput>
   vaccination?: Prisma.XOR<Prisma.VaccinationDetailsNullableScalarRelationFilter, Prisma.VaccinationDetailsWhereInput> | null
 }, "id">
 
 export type VisitServiceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  endedAt?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
   _count?: Prisma.VisitServiceCountOrderByAggregateInput
   _avg?: Prisma.VisitServiceAvgOrderByAggregateInput
   _max?: Prisma.VisitServiceMaxOrderByAggregateInput
@@ -262,56 +320,91 @@ export type VisitServiceScalarWhereWithAggregatesInput = {
   NOT?: Prisma.VisitServiceScalarWhereWithAggregatesInput | Prisma.VisitServiceScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"VisitService"> | number
   notes?: Prisma.StringNullableWithAggregatesFilter<"VisitService"> | string | null
+  startedAt?: Prisma.DateTimeWithAggregatesFilter<"VisitService"> | Date | string
+  endedAt?: Prisma.DateTimeWithAggregatesFilter<"VisitService"> | Date | string
   visitId?: Prisma.IntWithAggregatesFilter<"VisitService"> | number
   serviceId?: Prisma.IntWithAggregatesFilter<"VisitService"> | number
+  doctorId?: Prisma.IntWithAggregatesFilter<"VisitService"> | number
+  patientId?: Prisma.IntWithAggregatesFilter<"VisitService"> | number
 }
 
 export type VisitServiceCreateInput = {
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visit: Prisma.VisitCreateNestedOneWithoutServicesInput
   service: Prisma.ServiceCreateNestedOneWithoutVisitServicesInput
+  doctor: Prisma.EmployerListPostCreateNestedOneWithoutDoctorsInput
+  patient: Prisma.PatientCreateNestedOneWithoutVisitServicesInput
   vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
 }
 
 export type VisitServiceUncheckedCreateInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visitId: number
   serviceId: number
+  doctorId: number
+  patientId: number
   vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
 }
 
 export type VisitServiceUpdateInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
   service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+  doctor?: Prisma.EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitServicesNestedInput
   vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
 }
 
 export type VisitServiceUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visitId?: Prisma.IntFieldUpdateOperationsInput | number
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
   vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
 }
 
 export type VisitServiceCreateManyInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visitId: number
   serviceId: number
+  doctorId: number
+  patientId: number
 }
 
 export type VisitServiceUpdateManyMutationInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 export type VisitServiceUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visitId?: Prisma.IntFieldUpdateOperationsInput | number
   serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type VisitServiceScalarRelationFilter = {
+  is?: Prisma.VisitServiceWhereInput
+  isNot?: Prisma.VisitServiceWhereInput
 }
 
 export type VisitServiceListRelationFilter = {
@@ -327,81 +420,64 @@ export type VisitServiceOrderByRelationAggregateInput = {
 export type VisitServiceCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  endedAt?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
 }
 
 export type VisitServiceAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
 }
 
 export type VisitServiceMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  endedAt?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
 }
 
 export type VisitServiceMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  endedAt?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
 }
 
 export type VisitServiceSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   visitId?: Prisma.SortOrder
   serviceId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrder
+  patientId?: Prisma.SortOrder
 }
 
-export type VisitServiceScalarRelationFilter = {
-  is?: Prisma.VisitServiceWhereInput
-  isNot?: Prisma.VisitServiceWhereInput
+export type VisitServiceCreateNestedOneWithoutVaccinationInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVaccinationInput
+  connect?: Prisma.VisitServiceWhereUniqueInput
 }
 
-export type VisitServiceCreateNestedManyWithoutVisitInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
-  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
-  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-}
-
-export type VisitServiceUncheckedCreateNestedManyWithoutVisitInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
-  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
-  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-}
-
-export type VisitServiceUpdateManyWithoutVisitNestedInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
-  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput[]
-  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
-  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput[]
-  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput | Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput[]
-  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
-}
-
-export type VisitServiceUncheckedUpdateManyWithoutVisitNestedInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
-  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput[]
-  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
-  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
-  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput[]
-  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput | Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput[]
-  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+export type VisitServiceUpdateOneRequiredWithoutVaccinationNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVaccinationInput
+  upsert?: Prisma.VisitServiceUpsertWithoutVaccinationInput
+  connect?: Prisma.VisitServiceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VisitServiceUpdateToOneWithWhereWithoutVaccinationInput, Prisma.VisitServiceUpdateWithoutVaccinationInput>, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
 }
 
 export type VisitServiceCreateNestedManyWithoutServiceInput = {
@@ -446,79 +522,208 @@ export type VisitServiceUncheckedUpdateManyWithoutServiceNestedInput = {
   deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
 }
 
-export type VisitServiceCreateNestedOneWithoutVaccinationInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVaccinationInput
-  connect?: Prisma.VisitServiceWhereUniqueInput
+export type VisitServiceCreateNestedManyWithoutVisitInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
+  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
 }
 
-export type VisitServiceUpdateOneRequiredWithoutVaccinationNestedInput = {
-  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
-  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVaccinationInput
-  upsert?: Prisma.VisitServiceUpsertWithoutVaccinationInput
-  connect?: Prisma.VisitServiceWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.VisitServiceUpdateToOneWithWhereWithoutVaccinationInput, Prisma.VisitServiceUpdateWithoutVaccinationInput>, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
+export type VisitServiceUncheckedCreateNestedManyWithoutVisitInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
+  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
 }
 
-export type VisitServiceCreateWithoutVisitInput = {
+export type VisitServiceUpdateManyWithoutVisitNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput[]
+  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput | Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutVisitNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput> | Prisma.VisitServiceCreateWithoutVisitInput[] | Prisma.VisitServiceUncheckedCreateWithoutVisitInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutVisitInput | Prisma.VisitServiceCreateOrConnectWithoutVisitInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutVisitInput[]
+  createMany?: Prisma.VisitServiceCreateManyVisitInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutVisitInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput | Prisma.VisitServiceUpdateManyWithWhereWithoutVisitInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceCreateNestedManyWithoutDoctorInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput> | Prisma.VisitServiceCreateWithoutDoctorInput[] | Prisma.VisitServiceUncheckedCreateWithoutDoctorInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutDoctorInput | Prisma.VisitServiceCreateOrConnectWithoutDoctorInput[]
+  createMany?: Prisma.VisitServiceCreateManyDoctorInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+}
+
+export type VisitServiceUncheckedCreateNestedManyWithoutDoctorInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput> | Prisma.VisitServiceCreateWithoutDoctorInput[] | Prisma.VisitServiceUncheckedCreateWithoutDoctorInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutDoctorInput | Prisma.VisitServiceCreateOrConnectWithoutDoctorInput[]
+  createMany?: Prisma.VisitServiceCreateManyDoctorInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+}
+
+export type VisitServiceUpdateManyWithoutDoctorNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput> | Prisma.VisitServiceCreateWithoutDoctorInput[] | Prisma.VisitServiceUncheckedCreateWithoutDoctorInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutDoctorInput | Prisma.VisitServiceCreateOrConnectWithoutDoctorInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutDoctorInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutDoctorInput[]
+  createMany?: Prisma.VisitServiceCreateManyDoctorInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutDoctorInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutDoctorInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutDoctorInput | Prisma.VisitServiceUpdateManyWithWhereWithoutDoctorInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutDoctorNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput> | Prisma.VisitServiceCreateWithoutDoctorInput[] | Prisma.VisitServiceUncheckedCreateWithoutDoctorInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutDoctorInput | Prisma.VisitServiceCreateOrConnectWithoutDoctorInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutDoctorInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutDoctorInput[]
+  createMany?: Prisma.VisitServiceCreateManyDoctorInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutDoctorInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutDoctorInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutDoctorInput | Prisma.VisitServiceUpdateManyWithWhereWithoutDoctorInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceCreateNestedManyWithoutPatientInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput> | Prisma.VisitServiceCreateWithoutPatientInput[] | Prisma.VisitServiceUncheckedCreateWithoutPatientInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutPatientInput | Prisma.VisitServiceCreateOrConnectWithoutPatientInput[]
+  createMany?: Prisma.VisitServiceCreateManyPatientInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+}
+
+export type VisitServiceUncheckedCreateNestedManyWithoutPatientInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput> | Prisma.VisitServiceCreateWithoutPatientInput[] | Prisma.VisitServiceUncheckedCreateWithoutPatientInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutPatientInput | Prisma.VisitServiceCreateOrConnectWithoutPatientInput[]
+  createMany?: Prisma.VisitServiceCreateManyPatientInputEnvelope
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+}
+
+export type VisitServiceUpdateManyWithoutPatientNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput> | Prisma.VisitServiceCreateWithoutPatientInput[] | Prisma.VisitServiceUncheckedCreateWithoutPatientInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutPatientInput | Prisma.VisitServiceCreateOrConnectWithoutPatientInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutPatientInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutPatientInput[]
+  createMany?: Prisma.VisitServiceCreateManyPatientInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutPatientInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutPatientInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutPatientInput | Prisma.VisitServiceUpdateManyWithWhereWithoutPatientInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutPatientNestedInput = {
+  create?: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput> | Prisma.VisitServiceCreateWithoutPatientInput[] | Prisma.VisitServiceUncheckedCreateWithoutPatientInput[]
+  connectOrCreate?: Prisma.VisitServiceCreateOrConnectWithoutPatientInput | Prisma.VisitServiceCreateOrConnectWithoutPatientInput[]
+  upsert?: Prisma.VisitServiceUpsertWithWhereUniqueWithoutPatientInput | Prisma.VisitServiceUpsertWithWhereUniqueWithoutPatientInput[]
+  createMany?: Prisma.VisitServiceCreateManyPatientInputEnvelope
+  set?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  disconnect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  delete?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  connect?: Prisma.VisitServiceWhereUniqueInput | Prisma.VisitServiceWhereUniqueInput[]
+  update?: Prisma.VisitServiceUpdateWithWhereUniqueWithoutPatientInput | Prisma.VisitServiceUpdateWithWhereUniqueWithoutPatientInput[]
+  updateMany?: Prisma.VisitServiceUpdateManyWithWhereWithoutPatientInput | Prisma.VisitServiceUpdateManyWithWhereWithoutPatientInput[]
+  deleteMany?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+}
+
+export type VisitServiceCreateWithoutVaccinationInput = {
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visit: Prisma.VisitCreateNestedOneWithoutServicesInput
   service: Prisma.ServiceCreateNestedOneWithoutVisitServicesInput
-  vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
+  doctor: Prisma.EmployerListPostCreateNestedOneWithoutDoctorsInput
+  patient: Prisma.PatientCreateNestedOneWithoutVisitServicesInput
 }
 
-export type VisitServiceUncheckedCreateWithoutVisitInput = {
+export type VisitServiceUncheckedCreateWithoutVaccinationInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visitId: number
   serviceId: number
-  vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
+  doctorId: number
+  patientId: number
 }
 
-export type VisitServiceCreateOrConnectWithoutVisitInput = {
+export type VisitServiceCreateOrConnectWithoutVaccinationInput = {
   where: Prisma.VisitServiceWhereUniqueInput
-  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
 }
 
-export type VisitServiceCreateManyVisitInputEnvelope = {
-  data: Prisma.VisitServiceCreateManyVisitInput | Prisma.VisitServiceCreateManyVisitInput[]
-  skipDuplicates?: boolean
+export type VisitServiceUpsertWithoutVaccinationInput = {
+  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVaccinationInput, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
+  where?: Prisma.VisitServiceWhereInput
 }
 
-export type VisitServiceUpsertWithWhereUniqueWithoutVisitInput = {
-  where: Prisma.VisitServiceWhereUniqueInput
-  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVisitInput, Prisma.VisitServiceUncheckedUpdateWithoutVisitInput>
-  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput>
+export type VisitServiceUpdateToOneWithWhereWithoutVaccinationInput = {
+  where?: Prisma.VisitServiceWhereInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVaccinationInput, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
 }
 
-export type VisitServiceUpdateWithWhereUniqueWithoutVisitInput = {
-  where: Prisma.VisitServiceWhereUniqueInput
-  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVisitInput, Prisma.VisitServiceUncheckedUpdateWithoutVisitInput>
+export type VisitServiceUpdateWithoutVaccinationInput = {
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+  doctor?: Prisma.EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitServicesNestedInput
 }
 
-export type VisitServiceUpdateManyWithWhereWithoutVisitInput = {
-  where: Prisma.VisitServiceScalarWhereInput
-  data: Prisma.XOR<Prisma.VisitServiceUpdateManyMutationInput, Prisma.VisitServiceUncheckedUpdateManyWithoutVisitInput>
-}
-
-export type VisitServiceScalarWhereInput = {
-  AND?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
-  OR?: Prisma.VisitServiceScalarWhereInput[]
-  NOT?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
-  id?: Prisma.IntFilter<"VisitService"> | number
-  notes?: Prisma.StringNullableFilter<"VisitService"> | string | null
-  visitId?: Prisma.IntFilter<"VisitService"> | number
-  serviceId?: Prisma.IntFilter<"VisitService"> | number
+export type VisitServiceUncheckedUpdateWithoutVaccinationInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type VisitServiceCreateWithoutServiceInput = {
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visit: Prisma.VisitCreateNestedOneWithoutServicesInput
+  doctor: Prisma.EmployerListPostCreateNestedOneWithoutDoctorsInput
+  patient: Prisma.PatientCreateNestedOneWithoutVisitServicesInput
   vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
 }
 
 export type VisitServiceUncheckedCreateWithoutServiceInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visitId: number
+  doctorId: number
+  patientId: number
   vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
 }
 
@@ -548,96 +753,323 @@ export type VisitServiceUpdateManyWithWhereWithoutServiceInput = {
   data: Prisma.XOR<Prisma.VisitServiceUpdateManyMutationInput, Prisma.VisitServiceUncheckedUpdateManyWithoutServiceInput>
 }
 
-export type VisitServiceCreateWithoutVaccinationInput = {
+export type VisitServiceScalarWhereInput = {
+  AND?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+  OR?: Prisma.VisitServiceScalarWhereInput[]
+  NOT?: Prisma.VisitServiceScalarWhereInput | Prisma.VisitServiceScalarWhereInput[]
+  id?: Prisma.IntFilter<"VisitService"> | number
+  notes?: Prisma.StringNullableFilter<"VisitService"> | string | null
+  startedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
+  endedAt?: Prisma.DateTimeFilter<"VisitService"> | Date | string
+  visitId?: Prisma.IntFilter<"VisitService"> | number
+  serviceId?: Prisma.IntFilter<"VisitService"> | number
+  doctorId?: Prisma.IntFilter<"VisitService"> | number
+  patientId?: Prisma.IntFilter<"VisitService"> | number
+}
+
+export type VisitServiceCreateWithoutVisitInput = {
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  service: Prisma.ServiceCreateNestedOneWithoutVisitServicesInput
+  doctor: Prisma.EmployerListPostCreateNestedOneWithoutDoctorsInput
+  patient: Prisma.PatientCreateNestedOneWithoutVisitServicesInput
+  vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
+}
+
+export type VisitServiceUncheckedCreateWithoutVisitInput = {
+  id?: number
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  serviceId: number
+  doctorId: number
+  patientId: number
+  vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
+}
+
+export type VisitServiceCreateOrConnectWithoutVisitInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput>
+}
+
+export type VisitServiceCreateManyVisitInputEnvelope = {
+  data: Prisma.VisitServiceCreateManyVisitInput | Prisma.VisitServiceCreateManyVisitInput[]
+  skipDuplicates?: boolean
+}
+
+export type VisitServiceUpsertWithWhereUniqueWithoutVisitInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVisitInput, Prisma.VisitServiceUncheckedUpdateWithoutVisitInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVisitInput, Prisma.VisitServiceUncheckedCreateWithoutVisitInput>
+}
+
+export type VisitServiceUpdateWithWhereUniqueWithoutVisitInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVisitInput, Prisma.VisitServiceUncheckedUpdateWithoutVisitInput>
+}
+
+export type VisitServiceUpdateManyWithWhereWithoutVisitInput = {
+  where: Prisma.VisitServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateManyMutationInput, Prisma.VisitServiceUncheckedUpdateManyWithoutVisitInput>
+}
+
+export type VisitServiceCreateWithoutDoctorInput = {
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visit: Prisma.VisitCreateNestedOneWithoutServicesInput
   service: Prisma.ServiceCreateNestedOneWithoutVisitServicesInput
+  patient: Prisma.PatientCreateNestedOneWithoutVisitServicesInput
+  vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
 }
 
-export type VisitServiceUncheckedCreateWithoutVaccinationInput = {
+export type VisitServiceUncheckedCreateWithoutDoctorInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visitId: number
   serviceId: number
+  patientId: number
+  vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
 }
 
-export type VisitServiceCreateOrConnectWithoutVaccinationInput = {
+export type VisitServiceCreateOrConnectWithoutDoctorInput = {
   where: Prisma.VisitServiceWhereUniqueInput
-  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput>
 }
 
-export type VisitServiceUpsertWithoutVaccinationInput = {
-  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVaccinationInput, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
-  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutVaccinationInput, Prisma.VisitServiceUncheckedCreateWithoutVaccinationInput>
-  where?: Prisma.VisitServiceWhereInput
+export type VisitServiceCreateManyDoctorInputEnvelope = {
+  data: Prisma.VisitServiceCreateManyDoctorInput | Prisma.VisitServiceCreateManyDoctorInput[]
+  skipDuplicates?: boolean
 }
 
-export type VisitServiceUpdateToOneWithWhereWithoutVaccinationInput = {
-  where?: Prisma.VisitServiceWhereInput
-  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutVaccinationInput, Prisma.VisitServiceUncheckedUpdateWithoutVaccinationInput>
+export type VisitServiceUpsertWithWhereUniqueWithoutDoctorInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutDoctorInput, Prisma.VisitServiceUncheckedUpdateWithoutDoctorInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutDoctorInput, Prisma.VisitServiceUncheckedCreateWithoutDoctorInput>
 }
 
-export type VisitServiceUpdateWithoutVaccinationInput = {
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
-  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+export type VisitServiceUpdateWithWhereUniqueWithoutDoctorInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutDoctorInput, Prisma.VisitServiceUncheckedUpdateWithoutDoctorInput>
 }
 
-export type VisitServiceUncheckedUpdateWithoutVaccinationInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  visitId?: Prisma.IntFieldUpdateOperationsInput | number
-  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+export type VisitServiceUpdateManyWithWhereWithoutDoctorInput = {
+  where: Prisma.VisitServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateManyMutationInput, Prisma.VisitServiceUncheckedUpdateManyWithoutDoctorInput>
 }
 
-export type VisitServiceCreateManyVisitInput = {
+export type VisitServiceCreateWithoutPatientInput = {
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visit: Prisma.VisitCreateNestedOneWithoutServicesInput
+  service: Prisma.ServiceCreateNestedOneWithoutVisitServicesInput
+  doctor: Prisma.EmployerListPostCreateNestedOneWithoutDoctorsInput
+  vaccination?: Prisma.VaccinationDetailsCreateNestedOneWithoutVisitServiceInput
+}
+
+export type VisitServiceUncheckedCreateWithoutPatientInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visitId: number
   serviceId: number
+  doctorId: number
+  vaccination?: Prisma.VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput
 }
 
-export type VisitServiceUpdateWithoutVisitInput = {
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
-  vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
+export type VisitServiceCreateOrConnectWithoutPatientInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput>
 }
 
-export type VisitServiceUncheckedUpdateWithoutVisitInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
-  vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
+export type VisitServiceCreateManyPatientInputEnvelope = {
+  data: Prisma.VisitServiceCreateManyPatientInput | Prisma.VisitServiceCreateManyPatientInput[]
+  skipDuplicates?: boolean
 }
 
-export type VisitServiceUncheckedUpdateManyWithoutVisitInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+export type VisitServiceUpsertWithWhereUniqueWithoutPatientInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.VisitServiceUpdateWithoutPatientInput, Prisma.VisitServiceUncheckedUpdateWithoutPatientInput>
+  create: Prisma.XOR<Prisma.VisitServiceCreateWithoutPatientInput, Prisma.VisitServiceUncheckedCreateWithoutPatientInput>
+}
+
+export type VisitServiceUpdateWithWhereUniqueWithoutPatientInput = {
+  where: Prisma.VisitServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateWithoutPatientInput, Prisma.VisitServiceUncheckedUpdateWithoutPatientInput>
+}
+
+export type VisitServiceUpdateManyWithWhereWithoutPatientInput = {
+  where: Prisma.VisitServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.VisitServiceUpdateManyMutationInput, Prisma.VisitServiceUncheckedUpdateManyWithoutPatientInput>
 }
 
 export type VisitServiceCreateManyServiceInput = {
   id?: number
   notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
   visitId: number
+  doctorId: number
+  patientId: number
 }
 
 export type VisitServiceUpdateWithoutServiceInput = {
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
+  doctor?: Prisma.EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitServicesNestedInput
   vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
 }
 
 export type VisitServiceUncheckedUpdateWithoutServiceInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
   vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
 }
 
 export type VisitServiceUncheckedUpdateManyWithoutServiceInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type VisitServiceCreateManyVisitInput = {
+  id?: number
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  serviceId: number
+  doctorId: number
+  patientId: number
+}
+
+export type VisitServiceUpdateWithoutVisitInput = {
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+  doctor?: Prisma.EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitServicesNestedInput
+  vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateWithoutVisitInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+  vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutVisitInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type VisitServiceCreateManyDoctorInput = {
+  id?: number
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visitId: number
+  serviceId: number
+  patientId: number
+}
+
+export type VisitServiceUpdateWithoutDoctorInput = {
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+  patient?: Prisma.PatientUpdateOneRequiredWithoutVisitServicesNestedInput
+  vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateWithoutDoctorInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+  vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutDoctorInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  patientId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type VisitServiceCreateManyPatientInput = {
+  id?: number
+  notes?: string | null
+  startedAt?: Date | string
+  endedAt?: Date | string
+  visitId: number
+  serviceId: number
+  doctorId: number
+}
+
+export type VisitServiceUpdateWithoutPatientInput = {
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visit?: Prisma.VisitUpdateOneRequiredWithoutServicesNestedInput
+  service?: Prisma.ServiceUpdateOneRequiredWithoutVisitServicesNestedInput
+  doctor?: Prisma.EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput
+  vaccination?: Prisma.VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateWithoutPatientInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
+  vaccination?: Prisma.VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput
+}
+
+export type VisitServiceUncheckedUpdateManyWithoutPatientInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  startedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  endedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  visitId?: Prisma.IntFieldUpdateOperationsInput | number
+  serviceId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctorId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -645,51 +1077,79 @@ export type VisitServiceUncheckedUpdateManyWithoutServiceInput = {
 export type VisitServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notes?: boolean
+  startedAt?: boolean
+  endedAt?: boolean
   visitId?: boolean
   serviceId?: boolean
+  doctorId?: boolean
+  patientId?: boolean
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
   vaccination?: boolean | Prisma.VisitService$vaccinationArgs<ExtArgs>
 }, ExtArgs["result"]["visitService"]>
 
 export type VisitServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notes?: boolean
+  startedAt?: boolean
+  endedAt?: boolean
   visitId?: boolean
   serviceId?: boolean
+  doctorId?: boolean
+  patientId?: boolean
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["visitService"]>
 
 export type VisitServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notes?: boolean
+  startedAt?: boolean
+  endedAt?: boolean
   visitId?: boolean
   serviceId?: boolean
+  doctorId?: boolean
+  patientId?: boolean
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["visitService"]>
 
 export type VisitServiceSelectScalar = {
   id?: boolean
   notes?: boolean
+  startedAt?: boolean
+  endedAt?: boolean
   visitId?: boolean
   serviceId?: boolean
+  doctorId?: boolean
+  patientId?: boolean
 }
 
-export type VisitServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notes" | "visitId" | "serviceId", ExtArgs["result"]["visitService"]>
+export type VisitServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notes" | "startedAt" | "endedAt" | "visitId" | "serviceId" | "doctorId" | "patientId", ExtArgs["result"]["visitService"]>
 export type VisitServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
   vaccination?: boolean | Prisma.VisitService$vaccinationArgs<ExtArgs>
 }
 export type VisitServiceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
 }
 export type VisitServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   visit?: boolean | Prisma.VisitDefaultArgs<ExtArgs>
   service?: boolean | Prisma.ServiceDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.EmployerListPostDefaultArgs<ExtArgs>
+  patient?: boolean | Prisma.PatientDefaultArgs<ExtArgs>
 }
 
 export type $VisitServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -697,13 +1157,19 @@ export type $VisitServicePayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     visit: Prisma.$VisitPayload<ExtArgs>
     service: Prisma.$ServicePayload<ExtArgs>
+    doctor: Prisma.$EmployerListPostPayload<ExtArgs>
+    patient: Prisma.$PatientPayload<ExtArgs>
     vaccination: Prisma.$VaccinationDetailsPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     notes: string | null
+    startedAt: Date
+    endedAt: Date
     visitId: number
     serviceId: number
+    doctorId: number
+    patientId: number
   }, ExtArgs["result"]["visitService"]>
   composites: {}
 }
@@ -1100,6 +1566,8 @@ export interface Prisma__VisitServiceClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   visit<T extends Prisma.VisitDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VisitDefaultArgs<ExtArgs>>): Prisma.Prisma__VisitClient<runtime.Types.Result.GetResult<Prisma.$VisitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   service<T extends Prisma.ServiceDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceClient<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  doctor<T extends Prisma.EmployerListPostDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EmployerListPostDefaultArgs<ExtArgs>>): Prisma.Prisma__EmployerListPostClient<runtime.Types.Result.GetResult<Prisma.$EmployerListPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  patient<T extends Prisma.PatientDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PatientDefaultArgs<ExtArgs>>): Prisma.Prisma__PatientClient<runtime.Types.Result.GetResult<Prisma.$PatientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   vaccination<T extends Prisma.VisitService$vaccinationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.VisitService$vaccinationArgs<ExtArgs>>): Prisma.Prisma__VaccinationDetailsClient<runtime.Types.Result.GetResult<Prisma.$VaccinationDetailsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1132,8 +1600,12 @@ export interface Prisma__VisitServiceClient<T, Null = never, ExtArgs extends run
 export interface VisitServiceFieldRefs {
   readonly id: Prisma.FieldRef<"VisitService", 'Int'>
   readonly notes: Prisma.FieldRef<"VisitService", 'String'>
+  readonly startedAt: Prisma.FieldRef<"VisitService", 'DateTime'>
+  readonly endedAt: Prisma.FieldRef<"VisitService", 'DateTime'>
   readonly visitId: Prisma.FieldRef<"VisitService", 'Int'>
   readonly serviceId: Prisma.FieldRef<"VisitService", 'Int'>
+  readonly doctorId: Prisma.FieldRef<"VisitService", 'Int'>
+  readonly patientId: Prisma.FieldRef<"VisitService", 'Int'>
 }
     
 

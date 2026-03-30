@@ -283,11 +283,6 @@ export type BreedUncheckedUpdateManyInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type BreedScalarRelationFilter = {
-  is?: Prisma.BreedWhereInput
-  isNot?: Prisma.BreedWhereInput
-}
-
 export type BreedCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -312,6 +307,11 @@ export type BreedMinOrderByAggregateInput = {
 
 export type BreedSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
+}
+
+export type BreedScalarRelationFilter = {
+  is?: Prisma.BreedWhereInput
+  isNot?: Prisma.BreedWhereInput
 }
 
 export type BreedCreateNestedOneWithoutPatientsInput = {

@@ -30,21 +30,19 @@ export type VaccinationDetailsAvgAggregateOutputType = {
   id: number | null
   vaccineId: number | null
   visitServiceId: number | null
-  batchNumber: number | null
 }
 
 export type VaccinationDetailsSumAggregateOutputType = {
   id: number | null
   vaccineId: number | null
   visitServiceId: number | null
-  batchNumber: number | null
 }
 
 export type VaccinationDetailsMinAggregateOutputType = {
   id: number | null
   vaccineId: number | null
   visitServiceId: number | null
-  batchNumber: number | null
+  batchNumber: string | null
   expDate: Date | null
   nextDueDate: Date | null
   AdmSite: string | null
@@ -55,7 +53,7 @@ export type VaccinationDetailsMaxAggregateOutputType = {
   id: number | null
   vaccineId: number | null
   visitServiceId: number | null
-  batchNumber: number | null
+  batchNumber: string | null
   expDate: Date | null
   nextDueDate: Date | null
   AdmSite: string | null
@@ -79,14 +77,12 @@ export type VaccinationDetailsAvgAggregateInputType = {
   id?: true
   vaccineId?: true
   visitServiceId?: true
-  batchNumber?: true
 }
 
 export type VaccinationDetailsSumAggregateInputType = {
   id?: true
   vaccineId?: true
   visitServiceId?: true
-  batchNumber?: true
 }
 
 export type VaccinationDetailsMinAggregateInputType = {
@@ -213,7 +209,7 @@ export type VaccinationDetailsGroupByOutputType = {
   id: number
   vaccineId: number
   visitServiceId: number
-  batchNumber: number
+  batchNumber: string
   expDate: Date
   nextDueDate: Date
   AdmSite: string
@@ -247,7 +243,7 @@ export type VaccinationDetailsWhereInput = {
   id?: Prisma.IntFilter<"VaccinationDetails"> | number
   vaccineId?: Prisma.IntFilter<"VaccinationDetails"> | number
   visitServiceId?: Prisma.IntFilter<"VaccinationDetails"> | number
-  batchNumber?: Prisma.IntFilter<"VaccinationDetails"> | number
+  batchNumber?: Prisma.StringFilter<"VaccinationDetails"> | string
   expDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   nextDueDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   AdmSite?: Prisma.StringFilter<"VaccinationDetails"> | string
@@ -276,7 +272,7 @@ export type VaccinationDetailsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.VaccinationDetailsWhereInput[]
   NOT?: Prisma.VaccinationDetailsWhereInput | Prisma.VaccinationDetailsWhereInput[]
   vaccineId?: Prisma.IntFilter<"VaccinationDetails"> | number
-  batchNumber?: Prisma.IntFilter<"VaccinationDetails"> | number
+  batchNumber?: Prisma.StringFilter<"VaccinationDetails"> | string
   expDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   nextDueDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   AdmSite?: Prisma.StringFilter<"VaccinationDetails"> | string
@@ -308,7 +304,7 @@ export type VaccinationDetailsScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"VaccinationDetails"> | number
   vaccineId?: Prisma.IntWithAggregatesFilter<"VaccinationDetails"> | number
   visitServiceId?: Prisma.IntWithAggregatesFilter<"VaccinationDetails"> | number
-  batchNumber?: Prisma.IntWithAggregatesFilter<"VaccinationDetails"> | number
+  batchNumber?: Prisma.StringWithAggregatesFilter<"VaccinationDetails"> | string
   expDate?: Prisma.DateTimeWithAggregatesFilter<"VaccinationDetails"> | Date | string
   nextDueDate?: Prisma.DateTimeWithAggregatesFilter<"VaccinationDetails"> | Date | string
   AdmSite?: Prisma.StringWithAggregatesFilter<"VaccinationDetails"> | string
@@ -316,7 +312,7 @@ export type VaccinationDetailsScalarWhereWithAggregatesInput = {
 }
 
 export type VaccinationDetailsCreateInput = {
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -329,7 +325,7 @@ export type VaccinationDetailsUncheckedCreateInput = {
   id?: number
   vaccineId: number
   visitServiceId: number
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -337,7 +333,7 @@ export type VaccinationDetailsUncheckedCreateInput = {
 }
 
 export type VaccinationDetailsUpdateInput = {
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -350,7 +346,7 @@ export type VaccinationDetailsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   vaccineId?: Prisma.IntFieldUpdateOperationsInput | number
   visitServiceId?: Prisma.IntFieldUpdateOperationsInput | number
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -361,7 +357,7 @@ export type VaccinationDetailsCreateManyInput = {
   id?: number
   vaccineId: number
   visitServiceId: number
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -369,7 +365,7 @@ export type VaccinationDetailsCreateManyInput = {
 }
 
 export type VaccinationDetailsUpdateManyMutationInput = {
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -380,26 +376,11 @@ export type VaccinationDetailsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   vaccineId?: Prisma.IntFieldUpdateOperationsInput | number
   visitServiceId?: Prisma.IntFieldUpdateOperationsInput | number
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-}
-
-export type VaccinationDetailsNullableScalarRelationFilter = {
-  is?: Prisma.VaccinationDetailsWhereInput | null
-  isNot?: Prisma.VaccinationDetailsWhereInput | null
-}
-
-export type VaccinationDetailsListRelationFilter = {
-  every?: Prisma.VaccinationDetailsWhereInput
-  some?: Prisma.VaccinationDetailsWhereInput
-  none?: Prisma.VaccinationDetailsWhereInput
-}
-
-export type VaccinationDetailsOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type VaccinationDetailsCountOrderByAggregateInput = {
@@ -417,7 +398,6 @@ export type VaccinationDetailsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vaccineId?: Prisma.SortOrder
   visitServiceId?: Prisma.SortOrder
-  batchNumber?: Prisma.SortOrder
 }
 
 export type VaccinationDetailsMaxOrderByAggregateInput = {
@@ -446,39 +426,29 @@ export type VaccinationDetailsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   vaccineId?: Prisma.SortOrder
   visitServiceId?: Prisma.SortOrder
-  batchNumber?: Prisma.SortOrder
 }
 
-export type VaccinationDetailsCreateNestedOneWithoutVisitServiceInput = {
-  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
-  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
-  connect?: Prisma.VaccinationDetailsWhereUniqueInput
+export type VaccinationDetailsListRelationFilter = {
+  every?: Prisma.VaccinationDetailsWhereInput
+  some?: Prisma.VaccinationDetailsWhereInput
+  none?: Prisma.VaccinationDetailsWhereInput
 }
 
-export type VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput = {
-  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
-  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
-  connect?: Prisma.VaccinationDetailsWhereUniqueInput
+export type VaccinationDetailsOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
-export type VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput = {
-  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
-  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
-  upsert?: Prisma.VaccinationDetailsUpsertWithoutVisitServiceInput
-  disconnect?: Prisma.VaccinationDetailsWhereInput | boolean
-  delete?: Prisma.VaccinationDetailsWhereInput | boolean
-  connect?: Prisma.VaccinationDetailsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput, Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput>, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
+export type VaccinationDetailsNullableScalarRelationFilter = {
+  is?: Prisma.VaccinationDetailsWhereInput | null
+  isNot?: Prisma.VaccinationDetailsWhereInput | null
 }
 
-export type VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput = {
-  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
-  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
-  upsert?: Prisma.VaccinationDetailsUpsertWithoutVisitServiceInput
-  disconnect?: Prisma.VaccinationDetailsWhereInput | boolean
-  delete?: Prisma.VaccinationDetailsWhereInput | boolean
-  connect?: Prisma.VaccinationDetailsWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput, Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput>, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type VaccinationDetailsCreateNestedManyWithoutVaccineInput = {
@@ -523,62 +493,40 @@ export type VaccinationDetailsUncheckedUpdateManyWithoutVaccineNestedInput = {
   deleteMany?: Prisma.VaccinationDetailsScalarWhereInput | Prisma.VaccinationDetailsScalarWhereInput[]
 }
 
-export type VaccinationDetailsCreateWithoutVisitServiceInput = {
-  batchNumber: number
-  expDate: Date | string
-  nextDueDate: Date | string
-  AdmSite: string
-  notes?: string | null
-  vaccine: Prisma.VaccineCreateNestedOneWithoutVaccinationDetailsInput
+export type VaccinationDetailsCreateNestedOneWithoutVisitServiceInput = {
+  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
+  connect?: Prisma.VaccinationDetailsWhereUniqueInput
 }
 
-export type VaccinationDetailsUncheckedCreateWithoutVisitServiceInput = {
-  id?: number
-  vaccineId: number
-  batchNumber: number
-  expDate: Date | string
-  nextDueDate: Date | string
-  AdmSite: string
-  notes?: string | null
+export type VaccinationDetailsUncheckedCreateNestedOneWithoutVisitServiceInput = {
+  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
+  connect?: Prisma.VaccinationDetailsWhereUniqueInput
 }
 
-export type VaccinationDetailsCreateOrConnectWithoutVisitServiceInput = {
-  where: Prisma.VaccinationDetailsWhereUniqueInput
-  create: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+export type VaccinationDetailsUpdateOneWithoutVisitServiceNestedInput = {
+  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
+  upsert?: Prisma.VaccinationDetailsUpsertWithoutVisitServiceInput
+  disconnect?: Prisma.VaccinationDetailsWhereInput | boolean
+  delete?: Prisma.VaccinationDetailsWhereInput | boolean
+  connect?: Prisma.VaccinationDetailsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput, Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput>, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
 }
 
-export type VaccinationDetailsUpsertWithoutVisitServiceInput = {
-  update: Prisma.XOR<Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
-  create: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
-  where?: Prisma.VaccinationDetailsWhereInput
-}
-
-export type VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput = {
-  where?: Prisma.VaccinationDetailsWhereInput
-  data: Prisma.XOR<Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
-}
-
-export type VaccinationDetailsUpdateWithoutVisitServiceInput = {
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  vaccine?: Prisma.VaccineUpdateOneRequiredWithoutVaccinationDetailsNestedInput
-}
-
-export type VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  vaccineId?: Prisma.IntFieldUpdateOperationsInput | number
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
-  expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
-  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+export type VaccinationDetailsUncheckedUpdateOneWithoutVisitServiceNestedInput = {
+  create?: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+  connectOrCreate?: Prisma.VaccinationDetailsCreateOrConnectWithoutVisitServiceInput
+  upsert?: Prisma.VaccinationDetailsUpsertWithoutVisitServiceInput
+  disconnect?: Prisma.VaccinationDetailsWhereInput | boolean
+  delete?: Prisma.VaccinationDetailsWhereInput | boolean
+  connect?: Prisma.VaccinationDetailsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput, Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput>, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
 }
 
 export type VaccinationDetailsCreateWithoutVaccineInput = {
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -589,7 +537,7 @@ export type VaccinationDetailsCreateWithoutVaccineInput = {
 export type VaccinationDetailsUncheckedCreateWithoutVaccineInput = {
   id?: number
   visitServiceId: number
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -629,17 +577,71 @@ export type VaccinationDetailsScalarWhereInput = {
   id?: Prisma.IntFilter<"VaccinationDetails"> | number
   vaccineId?: Prisma.IntFilter<"VaccinationDetails"> | number
   visitServiceId?: Prisma.IntFilter<"VaccinationDetails"> | number
-  batchNumber?: Prisma.IntFilter<"VaccinationDetails"> | number
+  batchNumber?: Prisma.StringFilter<"VaccinationDetails"> | string
   expDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   nextDueDate?: Prisma.DateTimeFilter<"VaccinationDetails"> | Date | string
   AdmSite?: Prisma.StringFilter<"VaccinationDetails"> | string
   notes?: Prisma.StringNullableFilter<"VaccinationDetails"> | string | null
 }
 
+export type VaccinationDetailsCreateWithoutVisitServiceInput = {
+  batchNumber: string
+  expDate: Date | string
+  nextDueDate: Date | string
+  AdmSite: string
+  notes?: string | null
+  vaccine: Prisma.VaccineCreateNestedOneWithoutVaccinationDetailsInput
+}
+
+export type VaccinationDetailsUncheckedCreateWithoutVisitServiceInput = {
+  id?: number
+  vaccineId: number
+  batchNumber: string
+  expDate: Date | string
+  nextDueDate: Date | string
+  AdmSite: string
+  notes?: string | null
+}
+
+export type VaccinationDetailsCreateOrConnectWithoutVisitServiceInput = {
+  where: Prisma.VaccinationDetailsWhereUniqueInput
+  create: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+}
+
+export type VaccinationDetailsUpsertWithoutVisitServiceInput = {
+  update: Prisma.XOR<Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
+  create: Prisma.XOR<Prisma.VaccinationDetailsCreateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedCreateWithoutVisitServiceInput>
+  where?: Prisma.VaccinationDetailsWhereInput
+}
+
+export type VaccinationDetailsUpdateToOneWithWhereWithoutVisitServiceInput = {
+  where?: Prisma.VaccinationDetailsWhereInput
+  data: Prisma.XOR<Prisma.VaccinationDetailsUpdateWithoutVisitServiceInput, Prisma.VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput>
+}
+
+export type VaccinationDetailsUpdateWithoutVisitServiceInput = {
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  vaccine?: Prisma.VaccineUpdateOneRequiredWithoutVaccinationDetailsNestedInput
+}
+
+export type VaccinationDetailsUncheckedUpdateWithoutVisitServiceInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  vaccineId?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
+  expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+}
+
 export type VaccinationDetailsCreateManyVaccineInput = {
   id?: number
   visitServiceId: number
-  batchNumber: number
+  batchNumber: string
   expDate: Date | string
   nextDueDate: Date | string
   AdmSite: string
@@ -647,7 +649,7 @@ export type VaccinationDetailsCreateManyVaccineInput = {
 }
 
 export type VaccinationDetailsUpdateWithoutVaccineInput = {
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -658,7 +660,7 @@ export type VaccinationDetailsUpdateWithoutVaccineInput = {
 export type VaccinationDetailsUncheckedUpdateWithoutVaccineInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   visitServiceId?: Prisma.IntFieldUpdateOperationsInput | number
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -668,7 +670,7 @@ export type VaccinationDetailsUncheckedUpdateWithoutVaccineInput = {
 export type VaccinationDetailsUncheckedUpdateManyWithoutVaccineInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   visitServiceId?: Prisma.IntFieldUpdateOperationsInput | number
-  batchNumber?: Prisma.IntFieldUpdateOperationsInput | number
+  batchNumber?: Prisma.StringFieldUpdateOperationsInput | string
   expDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   nextDueDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   AdmSite?: Prisma.StringFieldUpdateOperationsInput | string
@@ -751,7 +753,7 @@ export type $VaccinationDetailsPayload<ExtArgs extends runtime.Types.Extensions.
     id: number
     vaccineId: number
     visitServiceId: number
-    batchNumber: number
+    batchNumber: string
     expDate: Date
     nextDueDate: Date
     AdmSite: string
@@ -1184,7 +1186,7 @@ export interface VaccinationDetailsFieldRefs {
   readonly id: Prisma.FieldRef<"VaccinationDetails", 'Int'>
   readonly vaccineId: Prisma.FieldRef<"VaccinationDetails", 'Int'>
   readonly visitServiceId: Prisma.FieldRef<"VaccinationDetails", 'Int'>
-  readonly batchNumber: Prisma.FieldRef<"VaccinationDetails", 'Int'>
+  readonly batchNumber: Prisma.FieldRef<"VaccinationDetails", 'String'>
   readonly expDate: Prisma.FieldRef<"VaccinationDetails", 'DateTime'>
   readonly nextDueDate: Prisma.FieldRef<"VaccinationDetails", 'DateTime'>
   readonly AdmSite: Prisma.FieldRef<"VaccinationDetails", 'String'>

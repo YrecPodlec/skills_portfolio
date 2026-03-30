@@ -28,13 +28,13 @@ export type AggregatePatient = {
 
 export type PatientAvgAggregateOutputType = {
   id: number | null
-  ownerId: number | null
+  peopleId: number | null
   breedId: number | null
 }
 
 export type PatientSumAggregateOutputType = {
   id: number | null
-  ownerId: number | null
+  peopleId: number | null
   breedId: number | null
 }
 
@@ -46,7 +46,7 @@ export type PatientMinAggregateOutputType = {
   color: string | null
   registrationDate: Date | null
   chipNumber: string | null
-  ownerId: number | null
+  peopleId: number | null
   breedId: number | null
 }
 
@@ -58,7 +58,7 @@ export type PatientMaxAggregateOutputType = {
   color: string | null
   registrationDate: Date | null
   chipNumber: string | null
-  ownerId: number | null
+  peopleId: number | null
   breedId: number | null
 }
 
@@ -70,7 +70,7 @@ export type PatientCountAggregateOutputType = {
   color: number
   registrationDate: number
   chipNumber: number
-  ownerId: number
+  peopleId: number
   breedId: number
   _all: number
 }
@@ -78,13 +78,13 @@ export type PatientCountAggregateOutputType = {
 
 export type PatientAvgAggregateInputType = {
   id?: true
-  ownerId?: true
+  peopleId?: true
   breedId?: true
 }
 
 export type PatientSumAggregateInputType = {
   id?: true
-  ownerId?: true
+  peopleId?: true
   breedId?: true
 }
 
@@ -96,7 +96,7 @@ export type PatientMinAggregateInputType = {
   color?: true
   registrationDate?: true
   chipNumber?: true
-  ownerId?: true
+  peopleId?: true
   breedId?: true
 }
 
@@ -108,7 +108,7 @@ export type PatientMaxAggregateInputType = {
   color?: true
   registrationDate?: true
   chipNumber?: true
-  ownerId?: true
+  peopleId?: true
   breedId?: true
 }
 
@@ -120,7 +120,7 @@ export type PatientCountAggregateInputType = {
   color?: true
   registrationDate?: true
   chipNumber?: true
-  ownerId?: true
+  peopleId?: true
   breedId?: true
   _all?: true
 }
@@ -219,7 +219,7 @@ export type PatientGroupByOutputType = {
   color: string | null
   registrationDate: Date
   chipNumber: string | null
-  ownerId: number
+  peopleId: number
   breedId: number
   _count: PatientCountAggregateOutputType | null
   _avg: PatientAvgAggregateOutputType | null
@@ -254,11 +254,12 @@ export type PatientWhereInput = {
   color?: Prisma.StringNullableFilter<"Patient"> | string | null
   registrationDate?: Prisma.DateTimeFilter<"Patient"> | Date | string
   chipNumber?: Prisma.StringNullableFilter<"Patient"> | string | null
-  ownerId?: Prisma.IntFilter<"Patient"> | number
+  peopleId?: Prisma.IntFilter<"Patient"> | number
   breedId?: Prisma.IntFilter<"Patient"> | number
-  owner?: Prisma.XOR<Prisma.OwnerScalarRelationFilter, Prisma.OwnerWhereInput>
+  owner?: Prisma.XOR<Prisma.PeopleScalarRelationFilter, Prisma.PeopleWhereInput>
   breed?: Prisma.XOR<Prisma.BreedScalarRelationFilter, Prisma.BreedWhereInput>
   visits?: Prisma.VisitListRelationFilter
+  visitServices?: Prisma.VisitServiceListRelationFilter
 }
 
 export type PatientOrderByWithRelationInput = {
@@ -269,11 +270,12 @@ export type PatientOrderByWithRelationInput = {
   color?: Prisma.SortOrderInput | Prisma.SortOrder
   registrationDate?: Prisma.SortOrder
   chipNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
   breedId?: Prisma.SortOrder
-  owner?: Prisma.OwnerOrderByWithRelationInput
+  owner?: Prisma.PeopleOrderByWithRelationInput
   breed?: Prisma.BreedOrderByWithRelationInput
   visits?: Prisma.VisitOrderByRelationAggregateInput
+  visitServices?: Prisma.VisitServiceOrderByRelationAggregateInput
 }
 
 export type PatientWhereUniqueInput = Prisma.AtLeast<{
@@ -287,11 +289,12 @@ export type PatientWhereUniqueInput = Prisma.AtLeast<{
   sex?: Prisma.BoolNullableFilter<"Patient"> | boolean | null
   color?: Prisma.StringNullableFilter<"Patient"> | string | null
   registrationDate?: Prisma.DateTimeFilter<"Patient"> | Date | string
-  ownerId?: Prisma.IntFilter<"Patient"> | number
+  peopleId?: Prisma.IntFilter<"Patient"> | number
   breedId?: Prisma.IntFilter<"Patient"> | number
-  owner?: Prisma.XOR<Prisma.OwnerScalarRelationFilter, Prisma.OwnerWhereInput>
+  owner?: Prisma.XOR<Prisma.PeopleScalarRelationFilter, Prisma.PeopleWhereInput>
   breed?: Prisma.XOR<Prisma.BreedScalarRelationFilter, Prisma.BreedWhereInput>
   visits?: Prisma.VisitListRelationFilter
+  visitServices?: Prisma.VisitServiceListRelationFilter
 }, "id" | "chipNumber">
 
 export type PatientOrderByWithAggregationInput = {
@@ -302,7 +305,7 @@ export type PatientOrderByWithAggregationInput = {
   color?: Prisma.SortOrderInput | Prisma.SortOrder
   registrationDate?: Prisma.SortOrder
   chipNumber?: Prisma.SortOrderInput | Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
   breedId?: Prisma.SortOrder
   _count?: Prisma.PatientCountOrderByAggregateInput
   _avg?: Prisma.PatientAvgOrderByAggregateInput
@@ -322,7 +325,7 @@ export type PatientScalarWhereWithAggregatesInput = {
   color?: Prisma.StringNullableWithAggregatesFilter<"Patient"> | string | null
   registrationDate?: Prisma.DateTimeWithAggregatesFilter<"Patient"> | Date | string
   chipNumber?: Prisma.StringNullableWithAggregatesFilter<"Patient"> | string | null
-  ownerId?: Prisma.IntWithAggregatesFilter<"Patient"> | number
+  peopleId?: Prisma.IntWithAggregatesFilter<"Patient"> | number
   breedId?: Prisma.IntWithAggregatesFilter<"Patient"> | number
 }
 
@@ -333,9 +336,10 @@ export type PatientCreateInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  owner: Prisma.OwnerCreateNestedOneWithoutPatientsInput
+  owner: Prisma.PeopleCreateNestedOneWithoutPatientsInput
   breed: Prisma.BreedCreateNestedOneWithoutPatientsInput
   visits?: Prisma.VisitCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceCreateNestedManyWithoutPatientInput
 }
 
 export type PatientUncheckedCreateInput = {
@@ -346,9 +350,10 @@ export type PatientUncheckedCreateInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  ownerId: number
+  peopleId: number
   breedId: number
   visits?: Prisma.VisitUncheckedCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutPatientInput
 }
 
 export type PatientUpdateInput = {
@@ -358,9 +363,10 @@ export type PatientUpdateInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  owner?: Prisma.OwnerUpdateOneRequiredWithoutPatientsNestedInput
+  owner?: Prisma.PeopleUpdateOneRequiredWithoutPatientsNestedInput
   breed?: Prisma.BreedUpdateOneRequiredWithoutPatientsNestedInput
   visits?: Prisma.VisitUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientUncheckedUpdateInput = {
@@ -371,9 +377,10 @@ export type PatientUncheckedUpdateInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
   breedId?: Prisma.IntFieldUpdateOperationsInput | number
   visits?: Prisma.VisitUncheckedUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUncheckedUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientCreateManyInput = {
@@ -384,7 +391,7 @@ export type PatientCreateManyInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  ownerId: number
+  peopleId: number
   breedId: number
 }
 
@@ -405,56 +412,13 @@ export type PatientUncheckedUpdateManyInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
   breedId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type PatientCountOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  sex?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  registrationDate?: Prisma.SortOrder
-  chipNumber?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
-  breedId?: Prisma.SortOrder
-}
-
-export type PatientAvgOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
-  breedId?: Prisma.SortOrder
-}
-
-export type PatientMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  sex?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  registrationDate?: Prisma.SortOrder
-  chipNumber?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
-  breedId?: Prisma.SortOrder
-}
-
-export type PatientMinOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  name?: Prisma.SortOrder
-  dateOfBirth?: Prisma.SortOrder
-  sex?: Prisma.SortOrder
-  color?: Prisma.SortOrder
-  registrationDate?: Prisma.SortOrder
-  chipNumber?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
-  breedId?: Prisma.SortOrder
-}
-
-export type PatientSumOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  ownerId?: Prisma.SortOrder
-  breedId?: Prisma.SortOrder
+export type PatientScalarRelationFilter = {
+  is?: Prisma.PatientWhereInput
+  isNot?: Prisma.PatientWhereInput
 }
 
 export type PatientListRelationFilter = {
@@ -467,79 +431,66 @@ export type PatientOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type PatientScalarRelationFilter = {
-  is?: Prisma.PatientWhereInput
-  isNot?: Prisma.PatientWhereInput
+export type PatientCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  color?: Prisma.SortOrder
+  registrationDate?: Prisma.SortOrder
+  chipNumber?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
+  breedId?: Prisma.SortOrder
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
+export type PatientAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
+  breedId?: Prisma.SortOrder
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
+export type PatientMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  color?: Prisma.SortOrder
+  registrationDate?: Prisma.SortOrder
+  chipNumber?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
+  breedId?: Prisma.SortOrder
 }
 
-export type NullableBoolFieldUpdateOperationsInput = {
-  set?: boolean | null
+export type PatientMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  name?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  sex?: Prisma.SortOrder
+  color?: Prisma.SortOrder
+  registrationDate?: Prisma.SortOrder
+  chipNumber?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
+  breedId?: Prisma.SortOrder
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
+export type PatientSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  peopleId?: Prisma.SortOrder
+  breedId?: Prisma.SortOrder
 }
 
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
+export type PatientCreateNestedOneWithoutVisitServicesInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutVisitServicesInput, Prisma.PatientUncheckedCreateWithoutVisitServicesInput>
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutVisitServicesInput
+  connect?: Prisma.PatientWhereUniqueInput
 }
 
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
-}
-
-export type PatientCreateNestedManyWithoutOwnerInput = {
-  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
-  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
-  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
-  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-}
-
-export type PatientUncheckedCreateNestedManyWithoutOwnerInput = {
-  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
-  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
-  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
-  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-}
-
-export type PatientUpdateManyWithoutOwnerNestedInput = {
-  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
-  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
-  upsert?: Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput[]
-  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
-  set?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  disconnect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  delete?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  update?: Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput[]
-  updateMany?: Prisma.PatientUpdateManyWithWhereWithoutOwnerInput | Prisma.PatientUpdateManyWithWhereWithoutOwnerInput[]
-  deleteMany?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
-}
-
-export type PatientUncheckedUpdateManyWithoutOwnerNestedInput = {
-  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
-  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
-  upsert?: Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput[]
-  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
-  set?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  disconnect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  delete?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
-  update?: Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput[]
-  updateMany?: Prisma.PatientUpdateManyWithWhereWithoutOwnerInput | Prisma.PatientUpdateManyWithWhereWithoutOwnerInput[]
-  deleteMany?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
+export type PatientUpdateOneRequiredWithoutVisitServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutVisitServicesInput, Prisma.PatientUncheckedCreateWithoutVisitServicesInput>
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutVisitServicesInput
+  upsert?: Prisma.PatientUpsertWithoutVisitServicesInput
+  connect?: Prisma.PatientWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PatientUpdateToOneWithWhereWithoutVisitServicesInput, Prisma.PatientUpdateWithoutVisitServicesInput>, Prisma.PatientUncheckedUpdateWithoutVisitServicesInput>
 }
 
 export type PatientCreateNestedManyWithoutBreedInput = {
@@ -598,18 +549,65 @@ export type PatientUpdateOneRequiredWithoutVisitsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.PatientUpdateToOneWithWhereWithoutVisitsInput, Prisma.PatientUpdateWithoutVisitsInput>, Prisma.PatientUncheckedUpdateWithoutVisitsInput>
 }
 
-export type PatientCreateWithoutOwnerInput = {
+export type NullableBoolFieldUpdateOperationsInput = {
+  set?: boolean | null
+}
+
+export type PatientCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
+  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+}
+
+export type PatientUncheckedCreateNestedManyWithoutOwnerInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
+  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
+  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+}
+
+export type PatientUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
+  set?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  disconnect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  delete?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  update?: Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.PatientUpdateManyWithWhereWithoutOwnerInput | Prisma.PatientUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
+}
+
+export type PatientUncheckedUpdateManyWithoutOwnerNestedInput = {
+  create?: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput> | Prisma.PatientCreateWithoutOwnerInput[] | Prisma.PatientUncheckedCreateWithoutOwnerInput[]
+  connectOrCreate?: Prisma.PatientCreateOrConnectWithoutOwnerInput | Prisma.PatientCreateOrConnectWithoutOwnerInput[]
+  upsert?: Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpsertWithWhereUniqueWithoutOwnerInput[]
+  createMany?: Prisma.PatientCreateManyOwnerInputEnvelope
+  set?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  disconnect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  delete?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  connect?: Prisma.PatientWhereUniqueInput | Prisma.PatientWhereUniqueInput[]
+  update?: Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput | Prisma.PatientUpdateWithWhereUniqueWithoutOwnerInput[]
+  updateMany?: Prisma.PatientUpdateManyWithWhereWithoutOwnerInput | Prisma.PatientUpdateManyWithWhereWithoutOwnerInput[]
+  deleteMany?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
+}
+
+export type PatientCreateWithoutVisitServicesInput = {
   name: string
   dateOfBirth?: Date | string | null
   sex?: boolean | null
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
+  owner: Prisma.PeopleCreateNestedOneWithoutPatientsInput
   breed: Prisma.BreedCreateNestedOneWithoutPatientsInput
   visits?: Prisma.VisitCreateNestedManyWithoutPatientInput
 }
 
-export type PatientUncheckedCreateWithoutOwnerInput = {
+export type PatientUncheckedCreateWithoutVisitServicesInput = {
   id?: number
   name: string
   dateOfBirth?: Date | string | null
@@ -617,49 +615,50 @@ export type PatientUncheckedCreateWithoutOwnerInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
+  peopleId: number
   breedId: number
   visits?: Prisma.VisitUncheckedCreateNestedManyWithoutPatientInput
 }
 
-export type PatientCreateOrConnectWithoutOwnerInput = {
+export type PatientCreateOrConnectWithoutVisitServicesInput = {
   where: Prisma.PatientWhereUniqueInput
-  create: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput>
+  create: Prisma.XOR<Prisma.PatientCreateWithoutVisitServicesInput, Prisma.PatientUncheckedCreateWithoutVisitServicesInput>
 }
 
-export type PatientCreateManyOwnerInputEnvelope = {
-  data: Prisma.PatientCreateManyOwnerInput | Prisma.PatientCreateManyOwnerInput[]
-  skipDuplicates?: boolean
+export type PatientUpsertWithoutVisitServicesInput = {
+  update: Prisma.XOR<Prisma.PatientUpdateWithoutVisitServicesInput, Prisma.PatientUncheckedUpdateWithoutVisitServicesInput>
+  create: Prisma.XOR<Prisma.PatientCreateWithoutVisitServicesInput, Prisma.PatientUncheckedCreateWithoutVisitServicesInput>
+  where?: Prisma.PatientWhereInput
 }
 
-export type PatientUpsertWithWhereUniqueWithoutOwnerInput = {
-  where: Prisma.PatientWhereUniqueInput
-  update: Prisma.XOR<Prisma.PatientUpdateWithoutOwnerInput, Prisma.PatientUncheckedUpdateWithoutOwnerInput>
-  create: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput>
+export type PatientUpdateToOneWithWhereWithoutVisitServicesInput = {
+  where?: Prisma.PatientWhereInput
+  data: Prisma.XOR<Prisma.PatientUpdateWithoutVisitServicesInput, Prisma.PatientUncheckedUpdateWithoutVisitServicesInput>
 }
 
-export type PatientUpdateWithWhereUniqueWithoutOwnerInput = {
-  where: Prisma.PatientWhereUniqueInput
-  data: Prisma.XOR<Prisma.PatientUpdateWithoutOwnerInput, Prisma.PatientUncheckedUpdateWithoutOwnerInput>
+export type PatientUpdateWithoutVisitServicesInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  owner?: Prisma.PeopleUpdateOneRequiredWithoutPatientsNestedInput
+  breed?: Prisma.BreedUpdateOneRequiredWithoutPatientsNestedInput
+  visits?: Prisma.VisitUpdateManyWithoutPatientNestedInput
 }
 
-export type PatientUpdateManyWithWhereWithoutOwnerInput = {
-  where: Prisma.PatientScalarWhereInput
-  data: Prisma.XOR<Prisma.PatientUpdateManyMutationInput, Prisma.PatientUncheckedUpdateManyWithoutOwnerInput>
-}
-
-export type PatientScalarWhereInput = {
-  AND?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
-  OR?: Prisma.PatientScalarWhereInput[]
-  NOT?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
-  id?: Prisma.IntFilter<"Patient"> | number
-  name?: Prisma.StringFilter<"Patient"> | string
-  dateOfBirth?: Prisma.DateTimeNullableFilter<"Patient"> | Date | string | null
-  sex?: Prisma.BoolNullableFilter<"Patient"> | boolean | null
-  color?: Prisma.StringNullableFilter<"Patient"> | string | null
-  registrationDate?: Prisma.DateTimeFilter<"Patient"> | Date | string
-  chipNumber?: Prisma.StringNullableFilter<"Patient"> | string | null
-  ownerId?: Prisma.IntFilter<"Patient"> | number
-  breedId?: Prisma.IntFilter<"Patient"> | number
+export type PatientUncheckedUpdateWithoutVisitServicesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
+  breedId?: Prisma.IntFieldUpdateOperationsInput | number
+  visits?: Prisma.VisitUncheckedUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientCreateWithoutBreedInput = {
@@ -669,8 +668,9 @@ export type PatientCreateWithoutBreedInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  owner: Prisma.OwnerCreateNestedOneWithoutPatientsInput
+  owner: Prisma.PeopleCreateNestedOneWithoutPatientsInput
   visits?: Prisma.VisitCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceCreateNestedManyWithoutPatientInput
 }
 
 export type PatientUncheckedCreateWithoutBreedInput = {
@@ -681,8 +681,9 @@ export type PatientUncheckedCreateWithoutBreedInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  ownerId: number
+  peopleId: number
   visits?: Prisma.VisitUncheckedCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutPatientInput
 }
 
 export type PatientCreateOrConnectWithoutBreedInput = {
@@ -711,6 +712,21 @@ export type PatientUpdateManyWithWhereWithoutBreedInput = {
   data: Prisma.XOR<Prisma.PatientUpdateManyMutationInput, Prisma.PatientUncheckedUpdateManyWithoutBreedInput>
 }
 
+export type PatientScalarWhereInput = {
+  AND?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
+  OR?: Prisma.PatientScalarWhereInput[]
+  NOT?: Prisma.PatientScalarWhereInput | Prisma.PatientScalarWhereInput[]
+  id?: Prisma.IntFilter<"Patient"> | number
+  name?: Prisma.StringFilter<"Patient"> | string
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"Patient"> | Date | string | null
+  sex?: Prisma.BoolNullableFilter<"Patient"> | boolean | null
+  color?: Prisma.StringNullableFilter<"Patient"> | string | null
+  registrationDate?: Prisma.DateTimeFilter<"Patient"> | Date | string
+  chipNumber?: Prisma.StringNullableFilter<"Patient"> | string | null
+  peopleId?: Prisma.IntFilter<"Patient"> | number
+  breedId?: Prisma.IntFilter<"Patient"> | number
+}
+
 export type PatientCreateWithoutVisitsInput = {
   name: string
   dateOfBirth?: Date | string | null
@@ -718,8 +734,9 @@ export type PatientCreateWithoutVisitsInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  owner: Prisma.OwnerCreateNestedOneWithoutPatientsInput
+  owner: Prisma.PeopleCreateNestedOneWithoutPatientsInput
   breed: Prisma.BreedCreateNestedOneWithoutPatientsInput
+  visitServices?: Prisma.VisitServiceCreateNestedManyWithoutPatientInput
 }
 
 export type PatientUncheckedCreateWithoutVisitsInput = {
@@ -730,8 +747,9 @@ export type PatientUncheckedCreateWithoutVisitsInput = {
   color?: string | null
   registrationDate?: Date | string
   chipNumber?: string | null
-  ownerId: number
+  peopleId: number
   breedId: number
+  visitServices?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutPatientInput
 }
 
 export type PatientCreateOrConnectWithoutVisitsInput = {
@@ -757,8 +775,9 @@ export type PatientUpdateWithoutVisitsInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  owner?: Prisma.OwnerUpdateOneRequiredWithoutPatientsNestedInput
+  owner?: Prisma.PeopleUpdateOneRequiredWithoutPatientsNestedInput
   breed?: Prisma.BreedUpdateOneRequiredWithoutPatientsNestedInput
+  visitServices?: Prisma.VisitServiceUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientUncheckedUpdateWithoutVisitsInput = {
@@ -769,8 +788,107 @@ export type PatientUncheckedUpdateWithoutVisitsInput = {
   color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
   breedId?: Prisma.IntFieldUpdateOperationsInput | number
+  visitServices?: Prisma.VisitServiceUncheckedUpdateManyWithoutPatientNestedInput
+}
+
+export type PatientCreateWithoutOwnerInput = {
+  name: string
+  dateOfBirth?: Date | string | null
+  sex?: boolean | null
+  color?: string | null
+  registrationDate?: Date | string
+  chipNumber?: string | null
+  breed: Prisma.BreedCreateNestedOneWithoutPatientsInput
+  visits?: Prisma.VisitCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceCreateNestedManyWithoutPatientInput
+}
+
+export type PatientUncheckedCreateWithoutOwnerInput = {
+  id?: number
+  name: string
+  dateOfBirth?: Date | string | null
+  sex?: boolean | null
+  color?: string | null
+  registrationDate?: Date | string
+  chipNumber?: string | null
+  breedId: number
+  visits?: Prisma.VisitUncheckedCreateNestedManyWithoutPatientInput
+  visitServices?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutPatientInput
+}
+
+export type PatientCreateOrConnectWithoutOwnerInput = {
+  where: Prisma.PatientWhereUniqueInput
+  create: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput>
+}
+
+export type PatientCreateManyOwnerInputEnvelope = {
+  data: Prisma.PatientCreateManyOwnerInput | Prisma.PatientCreateManyOwnerInput[]
+  skipDuplicates?: boolean
+}
+
+export type PatientUpsertWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.PatientWhereUniqueInput
+  update: Prisma.XOR<Prisma.PatientUpdateWithoutOwnerInput, Prisma.PatientUncheckedUpdateWithoutOwnerInput>
+  create: Prisma.XOR<Prisma.PatientCreateWithoutOwnerInput, Prisma.PatientUncheckedCreateWithoutOwnerInput>
+}
+
+export type PatientUpdateWithWhereUniqueWithoutOwnerInput = {
+  where: Prisma.PatientWhereUniqueInput
+  data: Prisma.XOR<Prisma.PatientUpdateWithoutOwnerInput, Prisma.PatientUncheckedUpdateWithoutOwnerInput>
+}
+
+export type PatientUpdateManyWithWhereWithoutOwnerInput = {
+  where: Prisma.PatientScalarWhereInput
+  data: Prisma.XOR<Prisma.PatientUpdateManyMutationInput, Prisma.PatientUncheckedUpdateManyWithoutOwnerInput>
+}
+
+export type PatientCreateManyBreedInput = {
+  id?: number
+  name: string
+  dateOfBirth?: Date | string | null
+  sex?: boolean | null
+  color?: string | null
+  registrationDate?: Date | string
+  chipNumber?: string | null
+  peopleId: number
+}
+
+export type PatientUpdateWithoutBreedInput = {
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  owner?: Prisma.PeopleUpdateOneRequiredWithoutPatientsNestedInput
+  visits?: Prisma.VisitUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUpdateManyWithoutPatientNestedInput
+}
+
+export type PatientUncheckedUpdateWithoutBreedInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
+  visits?: Prisma.VisitUncheckedUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUncheckedUpdateManyWithoutPatientNestedInput
+}
+
+export type PatientUncheckedUpdateManyWithoutBreedInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  peopleId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type PatientCreateManyOwnerInput = {
@@ -793,6 +911,7 @@ export type PatientUpdateWithoutOwnerInput = {
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   breed?: Prisma.BreedUpdateOneRequiredWithoutPatientsNestedInput
   visits?: Prisma.VisitUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientUncheckedUpdateWithoutOwnerInput = {
@@ -805,6 +924,7 @@ export type PatientUncheckedUpdateWithoutOwnerInput = {
   chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   breedId?: Prisma.IntFieldUpdateOperationsInput | number
   visits?: Prisma.VisitUncheckedUpdateManyWithoutPatientNestedInput
+  visitServices?: Prisma.VisitServiceUncheckedUpdateManyWithoutPatientNestedInput
 }
 
 export type PatientUncheckedUpdateManyWithoutOwnerInput = {
@@ -818,51 +938,6 @@ export type PatientUncheckedUpdateManyWithoutOwnerInput = {
   breedId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type PatientCreateManyBreedInput = {
-  id?: number
-  name: string
-  dateOfBirth?: Date | string | null
-  sex?: boolean | null
-  color?: string | null
-  registrationDate?: Date | string
-  chipNumber?: string | null
-  ownerId: number
-}
-
-export type PatientUpdateWithoutBreedInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  owner?: Prisma.OwnerUpdateOneRequiredWithoutPatientsNestedInput
-  visits?: Prisma.VisitUpdateManyWithoutPatientNestedInput
-}
-
-export type PatientUncheckedUpdateWithoutBreedInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
-  visits?: Prisma.VisitUncheckedUpdateManyWithoutPatientNestedInput
-}
-
-export type PatientUncheckedUpdateManyWithoutBreedInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  sex?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  color?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  registrationDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  chipNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  ownerId?: Prisma.IntFieldUpdateOperationsInput | number
-}
-
 
 /**
  * Count Type PatientCountOutputType
@@ -870,10 +945,12 @@ export type PatientUncheckedUpdateManyWithoutBreedInput = {
 
 export type PatientCountOutputType = {
   visits: number
+  visitServices: number
 }
 
 export type PatientCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   visits?: boolean | PatientCountOutputTypeCountVisitsArgs
+  visitServices?: boolean | PatientCountOutputTypeCountVisitServicesArgs
 }
 
 /**
@@ -893,6 +970,13 @@ export type PatientCountOutputTypeCountVisitsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.VisitWhereInput
 }
 
+/**
+ * PatientCountOutputType without action
+ */
+export type PatientCountOutputTypeCountVisitServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VisitServiceWhereInput
+}
+
 
 export type PatientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -902,11 +986,12 @@ export type PatientSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   color?: boolean
   registrationDate?: boolean
   chipNumber?: boolean
-  ownerId?: boolean
+  peopleId?: boolean
   breedId?: boolean
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
   visits?: boolean | Prisma.Patient$visitsArgs<ExtArgs>
+  visitServices?: boolean | Prisma.Patient$visitServicesArgs<ExtArgs>
   _count?: boolean | Prisma.PatientCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["patient"]>
 
@@ -918,9 +1003,9 @@ export type PatientSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   color?: boolean
   registrationDate?: boolean
   chipNumber?: boolean
-  ownerId?: boolean
+  peopleId?: boolean
   breedId?: boolean
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["patient"]>
 
@@ -932,9 +1017,9 @@ export type PatientSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   color?: boolean
   registrationDate?: boolean
   chipNumber?: boolean
-  ownerId?: boolean
+  peopleId?: boolean
   breedId?: boolean
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["patient"]>
 
@@ -946,32 +1031,34 @@ export type PatientSelectScalar = {
   color?: boolean
   registrationDate?: boolean
   chipNumber?: boolean
-  ownerId?: boolean
+  peopleId?: boolean
   breedId?: boolean
 }
 
-export type PatientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "dateOfBirth" | "sex" | "color" | "registrationDate" | "chipNumber" | "ownerId" | "breedId", ExtArgs["result"]["patient"]>
+export type PatientOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "dateOfBirth" | "sex" | "color" | "registrationDate" | "chipNumber" | "peopleId" | "breedId", ExtArgs["result"]["patient"]>
 export type PatientInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
   visits?: boolean | Prisma.Patient$visitsArgs<ExtArgs>
+  visitServices?: boolean | Prisma.Patient$visitServicesArgs<ExtArgs>
   _count?: boolean | Prisma.PatientCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PatientIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
 }
 export type PatientIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  owner?: boolean | Prisma.OwnerDefaultArgs<ExtArgs>
+  owner?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   breed?: boolean | Prisma.BreedDefaultArgs<ExtArgs>
 }
 
 export type $PatientPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Patient"
   objects: {
-    owner: Prisma.$OwnerPayload<ExtArgs>
+    owner: Prisma.$PeoplePayload<ExtArgs>
     breed: Prisma.$BreedPayload<ExtArgs>
     visits: Prisma.$VisitPayload<ExtArgs>[]
+    visitServices: Prisma.$VisitServicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -981,7 +1068,7 @@ export type $PatientPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     color: string | null
     registrationDate: Date
     chipNumber: string | null
-    ownerId: number
+    peopleId: number
     breedId: number
   }, ExtArgs["result"]["patient"]>
   composites: {}
@@ -1377,9 +1464,10 @@ readonly fields: PatientFieldRefs;
  */
 export interface Prisma__PatientClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  owner<T extends Prisma.OwnerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.OwnerDefaultArgs<ExtArgs>>): Prisma.Prisma__OwnerClient<runtime.Types.Result.GetResult<Prisma.$OwnerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  owner<T extends Prisma.PeopleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeopleDefaultArgs<ExtArgs>>): Prisma.Prisma__PeopleClient<runtime.Types.Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   breed<T extends Prisma.BreedDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BreedDefaultArgs<ExtArgs>>): Prisma.Prisma__BreedClient<runtime.Types.Result.GetResult<Prisma.$BreedPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   visits<T extends Prisma.Patient$visitsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Patient$visitsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  visitServices<T extends Prisma.Patient$visitServicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Patient$visitServicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1416,7 +1504,7 @@ export interface PatientFieldRefs {
   readonly color: Prisma.FieldRef<"Patient", 'String'>
   readonly registrationDate: Prisma.FieldRef<"Patient", 'DateTime'>
   readonly chipNumber: Prisma.FieldRef<"Patient", 'String'>
-  readonly ownerId: Prisma.FieldRef<"Patient", 'Int'>
+  readonly peopleId: Prisma.FieldRef<"Patient", 'Int'>
   readonly breedId: Prisma.FieldRef<"Patient", 'Int'>
 }
     
@@ -1835,6 +1923,30 @@ export type Patient$visitsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.VisitScalarFieldEnum | Prisma.VisitScalarFieldEnum[]
+}
+
+/**
+ * Patient.visitServices
+ */
+export type Patient$visitServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VisitService
+   */
+  select?: Prisma.VisitServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VisitService
+   */
+  omit?: Prisma.VisitServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VisitServiceInclude<ExtArgs> | null
+  where?: Prisma.VisitServiceWhereInput
+  orderBy?: Prisma.VisitServiceOrderByWithRelationInput | Prisma.VisitServiceOrderByWithRelationInput[]
+  cursor?: Prisma.VisitServiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VisitServiceScalarFieldEnum | Prisma.VisitServiceScalarFieldEnum[]
 }
 
 /**

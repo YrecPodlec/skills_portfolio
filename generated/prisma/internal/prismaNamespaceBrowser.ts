@@ -51,17 +51,25 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Patient: 'Patient',
-  Owner: 'Owner',
-  Breed: 'Breed',
-  Visit: 'Visit',
-  VisitService: 'VisitService',
+  Roles: 'Roles',
+  ContactType: 'ContactType',
+  EmployerPost: 'EmployerPost',
+  VaccinationDetails: 'VaccinationDetails',
   Service: 'Service',
   Vaccine: 'Vaccine',
-  VaccinationDetails: 'VaccinationDetails',
-  Employer: 'Employer',
-  EmployerPost: 'EmployerPost',
-  EmployerListPost: 'EmployerListPost'
+  VisitService: 'VisitService',
+  Breed: 'Breed',
+  Visit: 'Visit',
+  OrganizationType: 'OrganizationType',
+  educationType: 'educationType',
+  educationSpecialization: 'educationSpecialization',
+  Contact: 'Contact',
+  EmployerListPost: 'EmployerListPost',
+  Patient: 'Patient',
+  People: 'People',
+  contrAgency: 'contrAgency',
+  Passport: 'Passport',
+  educationDocument: 'educationDocument'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -80,33 +88,73 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const PatientScalarFieldEnum = {
+export const RolesScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  dateOfBirth: 'dateOfBirth',
-  sex: 'sex',
-  color: 'color',
-  registrationDate: 'registrationDate',
-  chipNumber: 'chipNumber',
-  ownerId: 'ownerId',
-  breedId: 'breedId'
+  role: 'role',
+  level: 'level'
 } as const
 
-export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
+export type RolesScalarFieldEnum = (typeof RolesScalarFieldEnum)[keyof typeof RolesScalarFieldEnum]
 
 
-export const OwnerScalarFieldEnum = {
+export const ContactTypeScalarFieldEnum = {
   id: 'id',
-  firstName: 'firstName',
-  lastName: 'lastName',
-  phone: 'phone',
-  email: 'email',
-  birth: 'birth',
-  address: 'address',
-  createdAt: 'createdAt'
+  type: 'type'
 } as const
 
-export type OwnerScalarFieldEnum = (typeof OwnerScalarFieldEnum)[keyof typeof OwnerScalarFieldEnum]
+export type ContactTypeScalarFieldEnum = (typeof ContactTypeScalarFieldEnum)[keyof typeof ContactTypeScalarFieldEnum]
+
+
+export const EmployerPostScalarFieldEnum = {
+  id: 'id',
+  post: 'post'
+} as const
+
+export type EmployerPostScalarFieldEnum = (typeof EmployerPostScalarFieldEnum)[keyof typeof EmployerPostScalarFieldEnum]
+
+
+export const VaccinationDetailsScalarFieldEnum = {
+  id: 'id',
+  vaccineId: 'vaccineId',
+  visitServiceId: 'visitServiceId',
+  batchNumber: 'batchNumber',
+  expDate: 'expDate',
+  nextDueDate: 'nextDueDate',
+  AdmSite: 'AdmSite',
+  notes: 'notes'
+} as const
+
+export type VaccinationDetailsScalarFieldEnum = (typeof VaccinationDetailsScalarFieldEnum)[keyof typeof VaccinationDetailsScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
+export const VaccineScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+} as const
+
+export type VaccineScalarFieldEnum = (typeof VaccineScalarFieldEnum)[keyof typeof VaccineScalarFieldEnum]
+
+
+export const VisitServiceScalarFieldEnum = {
+  id: 'id',
+  notes: 'notes',
+  startedAt: 'startedAt',
+  endedAt: 'endedAt',
+  visitId: 'visitId',
+  serviceId: 'serviceId',
+  doctorId: 'doctorId',
+  patientId: 'patientId'
+} as const
+
+export type VisitServiceScalarFieldEnum = (typeof VisitServiceScalarFieldEnum)[keyof typeof VisitServiceScalarFieldEnum]
 
 
 export const BreedScalarFieldEnum = {
@@ -130,69 +178,120 @@ export const VisitScalarFieldEnum = {
 export type VisitScalarFieldEnum = (typeof VisitScalarFieldEnum)[keyof typeof VisitScalarFieldEnum]
 
 
-export const VisitServiceScalarFieldEnum = {
+export const OrganizationTypeScalarFieldEnum = {
   id: 'id',
-  notes: 'notes',
-  visitId: 'visitId',
-  serviceId: 'serviceId'
+  type: 'type'
 } as const
 
-export type VisitServiceScalarFieldEnum = (typeof VisitServiceScalarFieldEnum)[keyof typeof VisitServiceScalarFieldEnum]
+export type OrganizationTypeScalarFieldEnum = (typeof OrganizationTypeScalarFieldEnum)[keyof typeof OrganizationTypeScalarFieldEnum]
 
 
-export const ServiceScalarFieldEnum = {
+export const EducationTypeScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  type: 'type'
 } as const
 
-export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+export type EducationTypeScalarFieldEnum = (typeof EducationTypeScalarFieldEnum)[keyof typeof EducationTypeScalarFieldEnum]
 
 
-export const VaccineScalarFieldEnum = {
+export const EducationSpecializationScalarFieldEnum = {
   id: 'id',
-  name: 'name'
+  specialization: 'specialization',
+  organizationId: 'organizationId'
 } as const
 
-export type VaccineScalarFieldEnum = (typeof VaccineScalarFieldEnum)[keyof typeof VaccineScalarFieldEnum]
+export type EducationSpecializationScalarFieldEnum = (typeof EducationSpecializationScalarFieldEnum)[keyof typeof EducationSpecializationScalarFieldEnum]
 
 
-export const VaccinationDetailsScalarFieldEnum = {
+export const ContactScalarFieldEnum = {
   id: 'id',
-  vaccineId: 'vaccineId',
-  visitServiceId: 'visitServiceId',
-  batchNumber: 'batchNumber',
-  expDate: 'expDate',
-  nextDueDate: 'nextDueDate',
-  AdmSite: 'AdmSite',
-  notes: 'notes'
+  typeId: 'typeId',
+  value: 'value',
+  createdAt: 'createdAt',
+  peopleId: 'peopleId'
 } as const
 
-export type VaccinationDetailsScalarFieldEnum = (typeof VaccinationDetailsScalarFieldEnum)[keyof typeof VaccinationDetailsScalarFieldEnum]
-
-
-export const EmployerScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  lastname: 'lastname'
-} as const
-
-export type EmployerScalarFieldEnum = (typeof EmployerScalarFieldEnum)[keyof typeof EmployerScalarFieldEnum]
-
-
-export const EmployerPostScalarFieldEnum = {
-  id: 'id',
-  post: 'post'
-} as const
-
-export type EmployerPostScalarFieldEnum = (typeof EmployerPostScalarFieldEnum)[keyof typeof EmployerPostScalarFieldEnum]
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
 
 
 export const EmployerListPostScalarFieldEnum = {
+  id: 'id',
   employerId: 'employerId',
   postId: 'postId'
 } as const
 
 export type EmployerListPostScalarFieldEnum = (typeof EmployerListPostScalarFieldEnum)[keyof typeof EmployerListPostScalarFieldEnum]
+
+
+export const PatientScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  dateOfBirth: 'dateOfBirth',
+  sex: 'sex',
+  color: 'color',
+  registrationDate: 'registrationDate',
+  chipNumber: 'chipNumber',
+  peopleId: 'peopleId',
+  breedId: 'breedId'
+} as const
+
+export type PatientScalarFieldEnum = (typeof PatientScalarFieldEnum)[keyof typeof PatientScalarFieldEnum]
+
+
+export const PeopleScalarFieldEnum = {
+  id: 'id',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  birth: 'birth',
+  address: 'address',
+  createdAt: 'createdAt',
+  roleId: 'roleId'
+} as const
+
+export type PeopleScalarFieldEnum = (typeof PeopleScalarFieldEnum)[keyof typeof PeopleScalarFieldEnum]
+
+
+export const ContrAgencyScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  addres: 'addres',
+  taxNumber: 'taxNumber',
+  KPP: 'KPP',
+  typeOrganizationId: 'typeOrganizationId'
+} as const
+
+export type ContrAgencyScalarFieldEnum = (typeof ContrAgencyScalarFieldEnum)[keyof typeof ContrAgencyScalarFieldEnum]
+
+
+export const PassportScalarFieldEnum = {
+  id: 'id',
+  serial: 'serial',
+  number: 'number',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  gender: 'gender',
+  birthDay: 'birthDay',
+  expiryDate: 'expiryDate',
+  mrzLine1: 'mrzLine1',
+  mrzLine2: 'mrzLine2',
+  issuedBy: 'issuedBy',
+  peopleId: 'peopleId'
+} as const
+
+export type PassportScalarFieldEnum = (typeof PassportScalarFieldEnum)[keyof typeof PassportScalarFieldEnum]
+
+
+export const EducationDocumentScalarFieldEnum = {
+  id: 'id',
+  typeId: 'typeId',
+  number: 'number',
+  dateIssue: 'dateIssue',
+  issueById: 'issueById',
+  withHonors: 'withHonors',
+  specializationId: 'specializationId'
+} as const
+
+export type EducationDocumentScalarFieldEnum = (typeof EducationDocumentScalarFieldEnum)[keyof typeof EducationDocumentScalarFieldEnum]
 
 
 export const SortOrder = {

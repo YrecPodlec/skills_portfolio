@@ -27,26 +27,31 @@ export type AggregateEmployerListPost = {
 }
 
 export type EmployerListPostAvgAggregateOutputType = {
+  id: number | null
   employerId: number | null
   postId: number | null
 }
 
 export type EmployerListPostSumAggregateOutputType = {
+  id: number | null
   employerId: number | null
   postId: number | null
 }
 
 export type EmployerListPostMinAggregateOutputType = {
+  id: number | null
   employerId: number | null
   postId: number | null
 }
 
 export type EmployerListPostMaxAggregateOutputType = {
+  id: number | null
   employerId: number | null
   postId: number | null
 }
 
 export type EmployerListPostCountAggregateOutputType = {
+  id: number
   employerId: number
   postId: number
   _all: number
@@ -54,26 +59,31 @@ export type EmployerListPostCountAggregateOutputType = {
 
 
 export type EmployerListPostAvgAggregateInputType = {
+  id?: true
   employerId?: true
   postId?: true
 }
 
 export type EmployerListPostSumAggregateInputType = {
+  id?: true
   employerId?: true
   postId?: true
 }
 
 export type EmployerListPostMinAggregateInputType = {
+  id?: true
   employerId?: true
   postId?: true
 }
 
 export type EmployerListPostMaxAggregateInputType = {
+  id?: true
   employerId?: true
   postId?: true
 }
 
 export type EmployerListPostCountAggregateInputType = {
+  id?: true
   employerId?: true
   postId?: true
   _all?: true
@@ -166,6 +176,7 @@ export type EmployerListPostGroupByArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 export type EmployerListPostGroupByOutputType = {
+  id: number
   employerId: number
   postId: number
   _count: EmployerListPostCountAggregateOutputType | null
@@ -194,31 +205,38 @@ export type EmployerListPostWhereInput = {
   AND?: Prisma.EmployerListPostWhereInput | Prisma.EmployerListPostWhereInput[]
   OR?: Prisma.EmployerListPostWhereInput[]
   NOT?: Prisma.EmployerListPostWhereInput | Prisma.EmployerListPostWhereInput[]
+  id?: Prisma.IntFilter<"EmployerListPost"> | number
   employerId?: Prisma.IntFilter<"EmployerListPost"> | number
   postId?: Prisma.IntFilter<"EmployerListPost"> | number
-  employer?: Prisma.XOR<Prisma.EmployerScalarRelationFilter, Prisma.EmployerWhereInput>
+  employer?: Prisma.XOR<Prisma.PeopleScalarRelationFilter, Prisma.PeopleWhereInput>
   post?: Prisma.XOR<Prisma.EmployerPostScalarRelationFilter, Prisma.EmployerPostWhereInput>
+  doctors?: Prisma.VisitServiceListRelationFilter
 }
 
 export type EmployerListPostOrderByWithRelationInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
-  employer?: Prisma.EmployerOrderByWithRelationInput
+  employer?: Prisma.PeopleOrderByWithRelationInput
   post?: Prisma.EmployerPostOrderByWithRelationInput
+  doctors?: Prisma.VisitServiceOrderByRelationAggregateInput
 }
 
 export type EmployerListPostWhereUniqueInput = Prisma.AtLeast<{
+  id?: number
   employerId_postId?: Prisma.EmployerListPostEmployerIdPostIdCompoundUniqueInput
   AND?: Prisma.EmployerListPostWhereInput | Prisma.EmployerListPostWhereInput[]
   OR?: Prisma.EmployerListPostWhereInput[]
   NOT?: Prisma.EmployerListPostWhereInput | Prisma.EmployerListPostWhereInput[]
   employerId?: Prisma.IntFilter<"EmployerListPost"> | number
   postId?: Prisma.IntFilter<"EmployerListPost"> | number
-  employer?: Prisma.XOR<Prisma.EmployerScalarRelationFilter, Prisma.EmployerWhereInput>
+  employer?: Prisma.XOR<Prisma.PeopleScalarRelationFilter, Prisma.PeopleWhereInput>
   post?: Prisma.XOR<Prisma.EmployerPostScalarRelationFilter, Prisma.EmployerPostWhereInput>
-}, "employerId_postId">
+  doctors?: Prisma.VisitServiceListRelationFilter
+}, "id" | "employerId_postId">
 
 export type EmployerListPostOrderByWithAggregationInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
   _count?: Prisma.EmployerListPostCountOrderByAggregateInput
@@ -232,31 +250,39 @@ export type EmployerListPostScalarWhereWithAggregatesInput = {
   AND?: Prisma.EmployerListPostScalarWhereWithAggregatesInput | Prisma.EmployerListPostScalarWhereWithAggregatesInput[]
   OR?: Prisma.EmployerListPostScalarWhereWithAggregatesInput[]
   NOT?: Prisma.EmployerListPostScalarWhereWithAggregatesInput | Prisma.EmployerListPostScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"EmployerListPost"> | number
   employerId?: Prisma.IntWithAggregatesFilter<"EmployerListPost"> | number
   postId?: Prisma.IntWithAggregatesFilter<"EmployerListPost"> | number
 }
 
 export type EmployerListPostCreateInput = {
-  employer: Prisma.EmployerCreateNestedOneWithoutPostsInput
+  employer: Prisma.PeopleCreateNestedOneWithoutPostsInput
   post: Prisma.EmployerPostCreateNestedOneWithoutEmployersInput
+  doctors?: Prisma.VisitServiceCreateNestedManyWithoutDoctorInput
 }
 
 export type EmployerListPostUncheckedCreateInput = {
+  id?: number
   employerId: number
   postId: number
+  doctors?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutDoctorInput
 }
 
 export type EmployerListPostUpdateInput = {
-  employer?: Prisma.EmployerUpdateOneRequiredWithoutPostsNestedInput
+  employer?: Prisma.PeopleUpdateOneRequiredWithoutPostsNestedInput
   post?: Prisma.EmployerPostUpdateOneRequiredWithoutEmployersNestedInput
+  doctors?: Prisma.VisitServiceUpdateManyWithoutDoctorNestedInput
 }
 
 export type EmployerListPostUncheckedUpdateInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   employerId?: Prisma.IntFieldUpdateOperationsInput | number
   postId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctors?: Prisma.VisitServiceUncheckedUpdateManyWithoutDoctorNestedInput
 }
 
 export type EmployerListPostCreateManyInput = {
+  id?: number
   employerId: number
   postId: number
 }
@@ -266,6 +292,7 @@ export type EmployerListPostUpdateManyMutationInput = {
 }
 
 export type EmployerListPostUncheckedUpdateManyInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   employerId?: Prisma.IntFieldUpdateOperationsInput | number
   postId?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -280,76 +307,44 @@ export type EmployerListPostOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type EmployerListPostScalarRelationFilter = {
+  is?: Prisma.EmployerListPostWhereInput
+  isNot?: Prisma.EmployerListPostWhereInput
+}
+
 export type EmployerListPostEmployerIdPostIdCompoundUniqueInput = {
   employerId: number
   postId: number
 }
 
 export type EmployerListPostCountOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
 }
 
 export type EmployerListPostAvgOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
 }
 
 export type EmployerListPostMaxOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
 }
 
 export type EmployerListPostMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
 }
 
 export type EmployerListPostSumOrderByAggregateInput = {
+  id?: Prisma.SortOrder
   employerId?: Prisma.SortOrder
   postId?: Prisma.SortOrder
-}
-
-export type EmployerListPostCreateNestedManyWithoutEmployerInput = {
-  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
-  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
-  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
-  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-}
-
-export type EmployerListPostUncheckedCreateNestedManyWithoutEmployerInput = {
-  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
-  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
-  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
-  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-}
-
-export type EmployerListPostUpdateManyWithoutEmployerNestedInput = {
-  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
-  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
-  upsert?: Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput[]
-  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
-  set?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  disconnect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  delete?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  update?: Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput[]
-  updateMany?: Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput | Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput[]
-  deleteMany?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
-}
-
-export type EmployerListPostUncheckedUpdateManyWithoutEmployerNestedInput = {
-  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
-  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
-  upsert?: Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput[]
-  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
-  set?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  disconnect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  delete?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
-  update?: Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput[]
-  updateMany?: Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput | Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput[]
-  deleteMany?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
 }
 
 export type EmployerListPostCreateNestedManyWithoutPostInput = {
@@ -394,54 +389,71 @@ export type EmployerListPostUncheckedUpdateManyWithoutPostNestedInput = {
   deleteMany?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
 }
 
-export type EmployerListPostCreateWithoutEmployerInput = {
-  post: Prisma.EmployerPostCreateNestedOneWithoutEmployersInput
+export type EmployerListPostCreateNestedOneWithoutDoctorsInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedCreateWithoutDoctorsInput>
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutDoctorsInput
+  connect?: Prisma.EmployerListPostWhereUniqueInput
 }
 
-export type EmployerListPostUncheckedCreateWithoutEmployerInput = {
-  postId: number
+export type EmployerListPostUpdateOneRequiredWithoutDoctorsNestedInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedCreateWithoutDoctorsInput>
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutDoctorsInput
+  upsert?: Prisma.EmployerListPostUpsertWithoutDoctorsInput
+  connect?: Prisma.EmployerListPostWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.EmployerListPostUpdateToOneWithWhereWithoutDoctorsInput, Prisma.EmployerListPostUpdateWithoutDoctorsInput>, Prisma.EmployerListPostUncheckedUpdateWithoutDoctorsInput>
 }
 
-export type EmployerListPostCreateOrConnectWithoutEmployerInput = {
-  where: Prisma.EmployerListPostWhereUniqueInput
-  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput>
+export type EmployerListPostCreateNestedManyWithoutEmployerInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
+  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
+  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
 }
 
-export type EmployerListPostCreateManyEmployerInputEnvelope = {
-  data: Prisma.EmployerListPostCreateManyEmployerInput | Prisma.EmployerListPostCreateManyEmployerInput[]
-  skipDuplicates?: boolean
+export type EmployerListPostUncheckedCreateNestedManyWithoutEmployerInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
+  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
+  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
 }
 
-export type EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput = {
-  where: Prisma.EmployerListPostWhereUniqueInput
-  update: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutEmployerInput, Prisma.EmployerListPostUncheckedUpdateWithoutEmployerInput>
-  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput>
+export type EmployerListPostUpdateManyWithoutEmployerNestedInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
+  upsert?: Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput[]
+  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
+  set?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  disconnect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  delete?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  update?: Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput[]
+  updateMany?: Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput | Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput[]
+  deleteMany?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
 }
 
-export type EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput = {
-  where: Prisma.EmployerListPostWhereUniqueInput
-  data: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutEmployerInput, Prisma.EmployerListPostUncheckedUpdateWithoutEmployerInput>
-}
-
-export type EmployerListPostUpdateManyWithWhereWithoutEmployerInput = {
-  where: Prisma.EmployerListPostScalarWhereInput
-  data: Prisma.XOR<Prisma.EmployerListPostUpdateManyMutationInput, Prisma.EmployerListPostUncheckedUpdateManyWithoutEmployerInput>
-}
-
-export type EmployerListPostScalarWhereInput = {
-  AND?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
-  OR?: Prisma.EmployerListPostScalarWhereInput[]
-  NOT?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
-  employerId?: Prisma.IntFilter<"EmployerListPost"> | number
-  postId?: Prisma.IntFilter<"EmployerListPost"> | number
+export type EmployerListPostUncheckedUpdateManyWithoutEmployerNestedInput = {
+  create?: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput> | Prisma.EmployerListPostCreateWithoutEmployerInput[] | Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput[]
+  connectOrCreate?: Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput | Prisma.EmployerListPostCreateOrConnectWithoutEmployerInput[]
+  upsert?: Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput[]
+  createMany?: Prisma.EmployerListPostCreateManyEmployerInputEnvelope
+  set?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  disconnect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  delete?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  connect?: Prisma.EmployerListPostWhereUniqueInput | Prisma.EmployerListPostWhereUniqueInput[]
+  update?: Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput | Prisma.EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput[]
+  updateMany?: Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput | Prisma.EmployerListPostUpdateManyWithWhereWithoutEmployerInput[]
+  deleteMany?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
 }
 
 export type EmployerListPostCreateWithoutPostInput = {
-  employer: Prisma.EmployerCreateNestedOneWithoutPostsInput
+  employer: Prisma.PeopleCreateNestedOneWithoutPostsInput
+  doctors?: Prisma.VisitServiceCreateNestedManyWithoutDoctorInput
 }
 
 export type EmployerListPostUncheckedCreateWithoutPostInput = {
+  id?: number
   employerId: number
+  doctors?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutDoctorInput
 }
 
 export type EmployerListPostCreateOrConnectWithoutPostInput = {
@@ -470,87 +482,220 @@ export type EmployerListPostUpdateManyWithWhereWithoutPostInput = {
   data: Prisma.XOR<Prisma.EmployerListPostUpdateManyMutationInput, Prisma.EmployerListPostUncheckedUpdateManyWithoutPostInput>
 }
 
+export type EmployerListPostScalarWhereInput = {
+  AND?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
+  OR?: Prisma.EmployerListPostScalarWhereInput[]
+  NOT?: Prisma.EmployerListPostScalarWhereInput | Prisma.EmployerListPostScalarWhereInput[]
+  id?: Prisma.IntFilter<"EmployerListPost"> | number
+  employerId?: Prisma.IntFilter<"EmployerListPost"> | number
+  postId?: Prisma.IntFilter<"EmployerListPost"> | number
+}
+
+export type EmployerListPostCreateWithoutDoctorsInput = {
+  employer: Prisma.PeopleCreateNestedOneWithoutPostsInput
+  post: Prisma.EmployerPostCreateNestedOneWithoutEmployersInput
+}
+
+export type EmployerListPostUncheckedCreateWithoutDoctorsInput = {
+  id?: number
+  employerId: number
+  postId: number
+}
+
+export type EmployerListPostCreateOrConnectWithoutDoctorsInput = {
+  where: Prisma.EmployerListPostWhereUniqueInput
+  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedCreateWithoutDoctorsInput>
+}
+
+export type EmployerListPostUpsertWithoutDoctorsInput = {
+  update: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedUpdateWithoutDoctorsInput>
+  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedCreateWithoutDoctorsInput>
+  where?: Prisma.EmployerListPostWhereInput
+}
+
+export type EmployerListPostUpdateToOneWithWhereWithoutDoctorsInput = {
+  where?: Prisma.EmployerListPostWhereInput
+  data: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutDoctorsInput, Prisma.EmployerListPostUncheckedUpdateWithoutDoctorsInput>
+}
+
+export type EmployerListPostUpdateWithoutDoctorsInput = {
+  employer?: Prisma.PeopleUpdateOneRequiredWithoutPostsNestedInput
+  post?: Prisma.EmployerPostUpdateOneRequiredWithoutEmployersNestedInput
+}
+
+export type EmployerListPostUncheckedUpdateWithoutDoctorsInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  employerId?: Prisma.IntFieldUpdateOperationsInput | number
+  postId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type EmployerListPostCreateWithoutEmployerInput = {
+  post: Prisma.EmployerPostCreateNestedOneWithoutEmployersInput
+  doctors?: Prisma.VisitServiceCreateNestedManyWithoutDoctorInput
+}
+
+export type EmployerListPostUncheckedCreateWithoutEmployerInput = {
+  id?: number
+  postId: number
+  doctors?: Prisma.VisitServiceUncheckedCreateNestedManyWithoutDoctorInput
+}
+
+export type EmployerListPostCreateOrConnectWithoutEmployerInput = {
+  where: Prisma.EmployerListPostWhereUniqueInput
+  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput>
+}
+
+export type EmployerListPostCreateManyEmployerInputEnvelope = {
+  data: Prisma.EmployerListPostCreateManyEmployerInput | Prisma.EmployerListPostCreateManyEmployerInput[]
+  skipDuplicates?: boolean
+}
+
+export type EmployerListPostUpsertWithWhereUniqueWithoutEmployerInput = {
+  where: Prisma.EmployerListPostWhereUniqueInput
+  update: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutEmployerInput, Prisma.EmployerListPostUncheckedUpdateWithoutEmployerInput>
+  create: Prisma.XOR<Prisma.EmployerListPostCreateWithoutEmployerInput, Prisma.EmployerListPostUncheckedCreateWithoutEmployerInput>
+}
+
+export type EmployerListPostUpdateWithWhereUniqueWithoutEmployerInput = {
+  where: Prisma.EmployerListPostWhereUniqueInput
+  data: Prisma.XOR<Prisma.EmployerListPostUpdateWithoutEmployerInput, Prisma.EmployerListPostUncheckedUpdateWithoutEmployerInput>
+}
+
+export type EmployerListPostUpdateManyWithWhereWithoutEmployerInput = {
+  where: Prisma.EmployerListPostScalarWhereInput
+  data: Prisma.XOR<Prisma.EmployerListPostUpdateManyMutationInput, Prisma.EmployerListPostUncheckedUpdateManyWithoutEmployerInput>
+}
+
+export type EmployerListPostCreateManyPostInput = {
+  id?: number
+  employerId: number
+}
+
+export type EmployerListPostUpdateWithoutPostInput = {
+  employer?: Prisma.PeopleUpdateOneRequiredWithoutPostsNestedInput
+  doctors?: Prisma.VisitServiceUpdateManyWithoutDoctorNestedInput
+}
+
+export type EmployerListPostUncheckedUpdateWithoutPostInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  employerId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctors?: Prisma.VisitServiceUncheckedUpdateManyWithoutDoctorNestedInput
+}
+
+export type EmployerListPostUncheckedUpdateManyWithoutPostInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  employerId?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
 export type EmployerListPostCreateManyEmployerInput = {
+  id?: number
   postId: number
 }
 
 export type EmployerListPostUpdateWithoutEmployerInput = {
   post?: Prisma.EmployerPostUpdateOneRequiredWithoutEmployersNestedInput
+  doctors?: Prisma.VisitServiceUpdateManyWithoutDoctorNestedInput
 }
 
 export type EmployerListPostUncheckedUpdateWithoutEmployerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   postId?: Prisma.IntFieldUpdateOperationsInput | number
+  doctors?: Prisma.VisitServiceUncheckedUpdateManyWithoutDoctorNestedInput
 }
 
 export type EmployerListPostUncheckedUpdateManyWithoutEmployerInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
   postId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type EmployerListPostCreateManyPostInput = {
-  employerId: number
+
+/**
+ * Count Type EmployerListPostCountOutputType
+ */
+
+export type EmployerListPostCountOutputType = {
+  doctors: number
 }
 
-export type EmployerListPostUpdateWithoutPostInput = {
-  employer?: Prisma.EmployerUpdateOneRequiredWithoutPostsNestedInput
+export type EmployerListPostCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  doctors?: boolean | EmployerListPostCountOutputTypeCountDoctorsArgs
 }
 
-export type EmployerListPostUncheckedUpdateWithoutPostInput = {
-  employerId?: Prisma.IntFieldUpdateOperationsInput | number
+/**
+ * EmployerListPostCountOutputType without action
+ */
+export type EmployerListPostCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the EmployerListPostCountOutputType
+   */
+  select?: Prisma.EmployerListPostCountOutputTypeSelect<ExtArgs> | null
 }
 
-export type EmployerListPostUncheckedUpdateManyWithoutPostInput = {
-  employerId?: Prisma.IntFieldUpdateOperationsInput | number
+/**
+ * EmployerListPostCountOutputType without action
+ */
+export type EmployerListPostCountOutputTypeCountDoctorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.VisitServiceWhereInput
 }
-
 
 
 export type EmployerListPostSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   employerId?: boolean
   postId?: boolean
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
+  doctors?: boolean | Prisma.EmployerListPost$doctorsArgs<ExtArgs>
+  _count?: boolean | Prisma.EmployerListPostCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["employerListPost"]>
 
 export type EmployerListPostSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   employerId?: boolean
   postId?: boolean
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["employerListPost"]>
 
 export type EmployerListPostSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+  id?: boolean
   employerId?: boolean
   postId?: boolean
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["employerListPost"]>
 
 export type EmployerListPostSelectScalar = {
+  id?: boolean
   employerId?: boolean
   postId?: boolean
 }
 
-export type EmployerListPostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"employerId" | "postId", ExtArgs["result"]["employerListPost"]>
+export type EmployerListPostOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "employerId" | "postId", ExtArgs["result"]["employerListPost"]>
 export type EmployerListPostInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
+  doctors?: boolean | Prisma.EmployerListPost$doctorsArgs<ExtArgs>
+  _count?: boolean | Prisma.EmployerListPostCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type EmployerListPostIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
 }
 export type EmployerListPostIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  employer?: boolean | Prisma.EmployerDefaultArgs<ExtArgs>
+  employer?: boolean | Prisma.PeopleDefaultArgs<ExtArgs>
   post?: boolean | Prisma.EmployerPostDefaultArgs<ExtArgs>
 }
 
 export type $EmployerListPostPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "EmployerListPost"
   objects: {
-    employer: Prisma.$EmployerPayload<ExtArgs>
+    employer: Prisma.$PeoplePayload<ExtArgs>
     post: Prisma.$EmployerPostPayload<ExtArgs>
+    doctors: Prisma.$VisitServicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
+    id: number
     employerId: number
     postId: number
   }, ExtArgs["result"]["employerListPost"]>
@@ -636,8 +781,8 @@ export interface EmployerListPostDelegate<ExtArgs extends runtime.Types.Extensio
    * // Get first 10 EmployerListPosts
    * const employerListPosts = await prisma.employerListPost.findMany({ take: 10 })
    * 
-   * // Only select the `employerId`
-   * const employerListPostWithEmployerIdOnly = await prisma.employerListPost.findMany({ select: { employerId: true } })
+   * // Only select the `id`
+   * const employerListPostWithIdOnly = await prisma.employerListPost.findMany({ select: { id: true } })
    * 
    */
   findMany<T extends EmployerListPostFindManyArgs>(args?: Prisma.SelectSubset<T, EmployerListPostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EmployerListPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -681,9 +826,9 @@ export interface EmployerListPostDelegate<ExtArgs extends runtime.Types.Extensio
    *   ]
    * })
    * 
-   * // Create many EmployerListPosts and only return the `employerId`
-   * const employerListPostWithEmployerIdOnly = await prisma.employerListPost.createManyAndReturn({
-   *   select: { employerId: true },
+   * // Create many EmployerListPosts and only return the `id`
+   * const employerListPostWithIdOnly = await prisma.employerListPost.createManyAndReturn({
+   *   select: { id: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -772,9 +917,9 @@ export interface EmployerListPostDelegate<ExtArgs extends runtime.Types.Extensio
    *   ]
    * })
    * 
-   * // Update zero or more EmployerListPosts and only return the `employerId`
-   * const employerListPostWithEmployerIdOnly = await prisma.employerListPost.updateManyAndReturn({
-   *   select: { employerId: true },
+   * // Update zero or more EmployerListPosts and only return the `id`
+   * const employerListPostWithIdOnly = await prisma.employerListPost.updateManyAndReturn({
+   *   select: { id: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -947,8 +1092,9 @@ readonly fields: EmployerListPostFieldRefs;
  */
 export interface Prisma__EmployerListPostClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  employer<T extends Prisma.EmployerDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EmployerDefaultArgs<ExtArgs>>): Prisma.Prisma__EmployerClient<runtime.Types.Result.GetResult<Prisma.$EmployerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  employer<T extends Prisma.PeopleDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PeopleDefaultArgs<ExtArgs>>): Prisma.Prisma__PeopleClient<runtime.Types.Result.GetResult<Prisma.$PeoplePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   post<T extends Prisma.EmployerPostDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EmployerPostDefaultArgs<ExtArgs>>): Prisma.Prisma__EmployerPostClient<runtime.Types.Result.GetResult<Prisma.$EmployerPostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  doctors<T extends Prisma.EmployerListPost$doctorsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EmployerListPost$doctorsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$VisitServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -978,6 +1124,7 @@ export interface Prisma__EmployerListPostClient<T, Null = never, ExtArgs extends
  * Fields of the EmployerListPost model
  */
 export interface EmployerListPostFieldRefs {
+  readonly id: Prisma.FieldRef<"EmployerListPost", 'Int'>
   readonly employerId: Prisma.FieldRef<"EmployerListPost", 'Int'>
   readonly postId: Prisma.FieldRef<"EmployerListPost", 'Int'>
 }
@@ -1373,6 +1520,30 @@ export type EmployerListPostDeleteManyArgs<ExtArgs extends runtime.Types.Extensi
    * Limit how many EmployerListPosts to delete.
    */
   limit?: number
+}
+
+/**
+ * EmployerListPost.doctors
+ */
+export type EmployerListPost$doctorsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VisitService
+   */
+  select?: Prisma.VisitServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VisitService
+   */
+  omit?: Prisma.VisitServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VisitServiceInclude<ExtArgs> | null
+  where?: Prisma.VisitServiceWhereInput
+  orderBy?: Prisma.VisitServiceOrderByWithRelationInput | Prisma.VisitServiceOrderByWithRelationInput[]
+  cursor?: Prisma.VisitServiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.VisitServiceScalarFieldEnum | Prisma.VisitServiceScalarFieldEnum[]
 }
 
 /**

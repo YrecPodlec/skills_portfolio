@@ -29,8 +29,8 @@ export * from "./enums"
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Patients
- * const patients = await prisma.patient.findMany()
+ * // Fetch zero or more Roles
+ * const roles = await prisma.roles.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -40,30 +40,25 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma }
 
 /**
- * Model Patient
+ * Model Roles
  * 
  */
-export type Patient = Prisma.PatientModel
+export type Roles = Prisma.RolesModel
 /**
- * Model Owner
+ * Model ContactType
  * 
  */
-export type Owner = Prisma.OwnerModel
+export type ContactType = Prisma.ContactTypeModel
 /**
- * Model Breed
+ * Model EmployerPost
  * 
  */
-export type Breed = Prisma.BreedModel
+export type EmployerPost = Prisma.EmployerPostModel
 /**
- * Model Visit
+ * Model VaccinationDetails
  * 
  */
-export type Visit = Prisma.VisitModel
-/**
- * Model VisitService
- * 
- */
-export type VisitService = Prisma.VisitServiceModel
+export type VaccinationDetails = Prisma.VaccinationDetailsModel
 /**
  * Model Service
  * 
@@ -75,22 +70,67 @@ export type Service = Prisma.ServiceModel
  */
 export type Vaccine = Prisma.VaccineModel
 /**
- * Model VaccinationDetails
+ * Model VisitService
  * 
  */
-export type VaccinationDetails = Prisma.VaccinationDetailsModel
+export type VisitService = Prisma.VisitServiceModel
 /**
- * Model Employer
+ * Model Breed
  * 
  */
-export type Employer = Prisma.EmployerModel
+export type Breed = Prisma.BreedModel
 /**
- * Model EmployerPost
+ * Model Visit
  * 
  */
-export type EmployerPost = Prisma.EmployerPostModel
+export type Visit = Prisma.VisitModel
+/**
+ * Model OrganizationType
+ * 
+ */
+export type OrganizationType = Prisma.OrganizationTypeModel
+/**
+ * Model educationType
+ * 
+ */
+export type educationType = Prisma.educationTypeModel
+/**
+ * Model educationSpecialization
+ * 
+ */
+export type educationSpecialization = Prisma.educationSpecializationModel
+/**
+ * Model Contact
+ * 
+ */
+export type Contact = Prisma.ContactModel
 /**
  * Model EmployerListPost
  * 
  */
 export type EmployerListPost = Prisma.EmployerListPostModel
+/**
+ * Model Patient
+ * 
+ */
+export type Patient = Prisma.PatientModel
+/**
+ * Model People
+ * 
+ */
+export type People = Prisma.PeopleModel
+/**
+ * Model contrAgency
+ * 
+ */
+export type contrAgency = Prisma.contrAgencyModel
+/**
+ * Model Passport
+ * 
+ */
+export type Passport = Prisma.PassportModel
+/**
+ * Model educationDocument
+ * 
+ */
+export type educationDocument = Prisma.educationDocumentModel

@@ -264,6 +264,11 @@ export type VaccineUncheckedUpdateManyInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
+export type VaccineScalarRelationFilter = {
+  is?: Prisma.VaccineWhereInput
+  isNot?: Prisma.VaccineWhereInput
+}
+
 export type VaccineCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
@@ -285,11 +290,6 @@ export type VaccineMinOrderByAggregateInput = {
 
 export type VaccineSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
-}
-
-export type VaccineScalarRelationFilter = {
-  is?: Prisma.VaccineWhereInput
-  isNot?: Prisma.VaccineWhereInput
 }
 
 export type VaccineCreateNestedOneWithoutVaccinationDetailsInput = {
